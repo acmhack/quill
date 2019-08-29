@@ -24,6 +24,7 @@ if(EMAIL_HEADER_IMAGE.indexOf("https") == -1){
 
 var NODE_ENV = process.env.NODE_ENV;
 
+
 var options = {
   host: EMAIL_HOST,
   port: EMAIL_PORT,
@@ -34,7 +35,13 @@ var options = {
   }
 };
 
-var transporter = nodemailer.createTransport(smtpTransport(options));
+var transporter = nodemailer.createTransport({
+  service: 'Gmail',
+  auth: {
+    user: EMAIL_USER,
+    pass: EMAIL_PASS
+  }
+});
 
 var controller = {};
 
