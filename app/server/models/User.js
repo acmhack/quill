@@ -7,10 +7,22 @@ var mongoose   = require('mongoose'),
 var profile = {
 
   // Basic info
-  name: {
+  firstName: {
     type: String,
     min: 1,
     max: 100,
+  },
+
+  lastName: {
+    type: String,
+    min: 1,
+    max: 100,
+  },
+
+  phone: {
+    type: String,
+    min: 1,
+    max: 15,
   },
 
   adult: {
@@ -25,10 +37,16 @@ var profile = {
     max: 150,
   },
 
+  major: {
+    type: String,
+    min: 1,
+    max: 150,
+  },
+
   graduationYear: {
     type: String,
     enum: {
-      values: '2016 2017 2018 2019'.split(' '),
+      values: '2020 2021 2022 2023'.split(' '),
     }
   },
 
@@ -48,10 +66,92 @@ var profile = {
   gender: {
     type: String,
     enum : {
-      values: 'M F O N'.split(' ')
+      values: 'M F O Z'.split(' ')
     }
   },
 
+  race: {
+    type: String,
+    enum : {
+      values: 'N A B H I W T Z'.split(' ')
+    }
+  },
+
+  participationCount: {
+    type: String,
+    enum : {
+      values: 'N S M L'.split(' ')
+    }
+  },
+
+  resume: {
+    type: String,
+    min: 0,
+    max: 500
+  },
+
+  linkedIn: {
+    type: String,
+    min: 0,
+    max: 500
+  },
+
+  github: {
+    type: String,
+    min: 0,
+    max: 500
+  },
+
+  otherSites: {
+    type: String,
+    min: 0,
+    max: 500
+  },
+
+  ssSize: {
+    type: String,
+    enum : {
+      values: 'S M L X'.split(' ')
+    }
+  },
+
+  diet: {
+    type: String,
+    enum : {
+      values: 'N T V G D A K H O'.split(' ')
+    }
+  },
+
+  travel: {
+    type: String,
+    enum : {
+      values: 'D F B P W'.split(' ')
+    }
+  },
+
+  youtubevid: {
+    type: String,
+    min: 0,
+    max: 500
+  },
+
+  discoveryMethod: {
+    type: String,
+    min: 0,
+    max: 500
+  },
+
+  codeAgreement: {
+    type: Boolean,
+    required: true,
+    default: false,
+  },
+
+  dataAgreement: {
+    type: Boolean,
+    required: true,
+    default: false,
+  },
 };
 
 // Only after confirmed
@@ -330,11 +430,11 @@ schema.statics.getByToken = function(token, callback){
 
 schema.statics.validateProfile = function(profile, cb){
   return cb(!(
-    profile.name.length > 0 &&
+    profile.firstName.length > 0 &&
     profile.adult &&
     profile.school.length > 0 &&
-    ['2016', '2017', '2018', '2019'].indexOf(profile.graduationYear) > -1 &&
-    ['M', 'F', 'O', 'N'].indexOf(profile.gender) > -1
+    ['2020', '2021', '2022', '2023'].indexOf(profile.graduationYear) > -1 &&
+    ['M', 'F', 'O', 'Z'].indexOf(profile.gender) > -1
     ));
 };
 

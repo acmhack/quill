@@ -38,7 +38,7 @@
           <label> Phone Number </label>
           <input type="tel" id="phone" name="phone"
                  pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"
-                 ng-model="user.profile.number">
+                 ng-model="user.profile.phone">
         </div>
 
         <div class="field" ng-show="autoFilledSchool">
@@ -71,37 +71,189 @@
             <option value="2023">2023</option>
           </select>
         </div>
+        <div class="field" ng-show="autoFilledMajor">
+          <label> Major </label>
+          <input class="ui input"
+                 disabled="disabled"
+                 ng-show="autoFilledMajor"
+                 ng-model="user.profile.major">
+        </div>
+
 
         <div class="field">
           <label>Gender</label>
           <select
             name="gender"
             ng-model="user.profile.gender">
-            <option value="">Gender</option>
             <option value="M">Male</option>
             <option value="F">Female</option>
             <option value="O">Other</option>
-            <option value="N">I prefer not to answer.</option>
+            <option value="Z">I prefer not to answer.</option>
           </select>
         </div>
 
         <div class="field">
-          <label>I would describe myself as a...</label>
-          <input type="text"
-                 placeholder="Designer, Data Scientist, iOS Wizard, Hacker Extraordinaire"
-                 ng-model="user.profile.description">
+          <label>Race</label>
+          <select
+            name="race"
+            ng-model="user.profile.race">
+            <option value="N">American Indian or Alaskan Native</option>
+            <option value="A">Asian</option>
+            <option value="B">Black or African-American</option>
+            <option value="H">Hispanic or Latino</option>
+            <option value="I">Native Hawaiian or other Pacific Islander</option>
+            <option value="W">White or Caucasian</option>
+            <option value="T">Two or more races</option>
+            <option value="Z">I prefer not to answer.</option>
+          </select>
         </div>
 
         <div class="field">
-          <label>
-              What would you like to learn or get out of PickHacks? (optional)
-          </label>
-          <textarea ng-model="user.profile.essay">
-          </textarea>
+          <label>How many hackathons have you participated in?</label>
+          <select
+            name="participationCount"
+            ng-model="user.profile.participationCount">
+            <option value="N">0</option>
+            <option value="S">1-3</option>
+            <option value="M">4-6</option>
+            <option value="L">7+</option>
+          </select>
+        </div>
+
+        <div class="field">
+          <label> Upload Resume here (soon tm) </label>
+          <input type="file"
+                 name="resume"
+                 id="resumeUpload"
+                 onchange="resUp()" 
+                 ng-model="user.profile.resume">
+        </div>
+
+        <!--
+		        <div class="field">
+          <label> Upload Resume here (soon tm) </label>
+          <input type="file"
+          		#uploader
+          		 hidden
+                 name="resume"
+                 ng-model="user.profile.resume"
+                 (change)="resUp(this)"
+                 >
+           <button (click)="uploader.click()">
+           		Upload
+           </button>
+        </div>
+    -->
+        <div class="field">
+          <label> LinkedIn </label>
+          <input type="text"
+                 name="linkedIn"
+                 ng-model="user.profile.linkedIn">
+        </div>
+
+        <div class="field">
+          <label> GitHub </label>
+          <input type="text"
+                 name="github"
+                 ng-model="user.profile.github">
+        </div>
+
+        <div class="field">
+          <label> Any other sites you want to share? </label>
+          <input type="text"
+                 name="otherSites"
+                 ng-model="user.profile.otherSites">
+        </div>
+
+        <div class="field">
+          <label>What is your sweatshirt size?</label>
+          <select
+            name="ssSize"
+            ng-model="user.profile.ssSize">
+            <option value="S">Small</option>
+            <option value="M">Medium</option>
+            <option value="L">Large</option>
+            <option value="X">X-Large</option>
+          </select>
+        </div>
+
+        <div class="field">
+          <label>Any dietary restrictions?</label>
+          <select
+            name="diet"
+            ng-model="user.profile.diet">
+            <option value="N">None</option>
+            <option value="T">Vegetarian</option>
+            <option value="V">Vegan</option>
+            <option value="G">Gluten Free</option>
+            <option value="D">Dairy Free</option>
+            <option value="A">Nut Allergy</option>
+            <option value="K">Kosher</option>
+            <option value="H">Halal</option>
+            <option value="O">Other</option>
+          </select>
+        </div>
+
+        <div class="field">
+          <label>How do you plan on getting to PickHacks?</label>
+          <select
+            name="travel"
+            ng-model="user.profile.travel">
+            <option value="D">Driving</option>
+            <option value="F">Flying</option>
+            <option value="B">PickHacks Bus</option>
+            <option value="P">Public Transportation</option>
+            <option value="W">Walking/Biking</option>
+          </select>
+        </div>
+
+        <div class="field">
+          <label>Pitch us your best YouTube / Netflix recommendation(s).</label>
+          <input type="text"
+                 name="youtubevid"
+                 ng-model="user.profile.youtubevid">
+        </div>
+
+        <div class="field">
+          <label>How did you hear about PickHacks?</label>
+          <select
+            name="discoveryMethod"
+            ng-model="user.profile.discoveryMethod">
+            <option value="W">Word Of Mouth</option>
+            <option value="M">Social Media (Instagram, Twitter, FB, etc.)</option>
+            <option value="H">MLH Website</option>
+            <option value="E">E-mail</option>
+            <option value="S">School Organization</option>
+            <option value="P">Professor / Class</option>
+            <option value="I">Internet Search</option>
+            <option value="O">Other</option>
+          </select>
         </div>
 
         <div class="field"
-             ng-hide="isMitStudent">
+             ng-hide="codeAgreement">
+          <p>Code of Conduct:</p><a href="https://static.mlh.io/docs/mlh-code-of-conduct.pdf">https://static.mlh.io/docs/mlh-code-of-conduct.pdf</a>
+          <p></p>
+          <div class="ui checkbox">
+            <input type="checkbox" id="codeAgreement" ng-model="user.profile.codeAgreement">
+            <label for="codeAgreement">I have read and agree to the code of conduct.</label>
+          </div>
+        </div>
+
+        <div class="field"
+             ng-hide="dataAgreement">
+          <p>Privacy Policy:</p><a href="https://mlh.io/privacy">https://mlh.io/privacy</a><p></p>
+          <p>Terms & Conditions:</p><a href="https://github.com/MLH/mlh-policies/tree/master/prize-terms-and-conditions">https://github.com/MLH/mlh-policies/tree/master/prize-terms-and-conditions</a><p></p>
+          <p>"I authorize you to share my application/registration information for event administration, ranking, MLH administration, pre- and post-event informational e-mails, and occasional messages about hackathons in-line with the MLH Privacy Policy. I further I agree to the terms of both the MLH Contest Terms and Conditions and the MLH Privacy Policy."</p><p></p>
+          <div class="ui checkbox">
+            <input type="checkbox" id="dataAgreement" ng-model="user.profile.dataAgreement">
+            <label for="dataAgreement">I agree.</label>
+          </div>
+        </div>
+
+
+        <div class="field"
+             ng-hide="isMstStudent">
           <p>
             Because of limitations imposed by MST, we are not legally allowed to host
             non-MST minors (those under 18) for PickHacks 2020. Checking the box below affirms that you are or will be 18 years or older by the start date.
@@ -116,6 +268,7 @@
             <label for="adult">I am 18 or older.</label>
           </div>
         </div>
+
 
         <br>
 

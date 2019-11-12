@@ -70,6 +70,10 @@ angular.module('reg')
           });
       }
 
+      function resUp(files){
+        console.log(files)
+      }
+
       function _updateUser(e){
         UserService
           .updateProfile(Session.getUserId(), $scope.user.profile)
@@ -108,12 +112,30 @@ angular.module('reg')
         $('.ui.form').form({
           inline: true,
           fields: {
-            name: {
-              identifier: 'name',
+            firstName: {
+              identifier: 'firstName',
               rules: [
                 {
                   type: 'empty',
-                  prompt: 'Please enter your name.'
+                  prompt: 'Please enter your first name.'
+                }
+              ]
+            },
+            lastName: {
+              identifier: 'lastName',
+              rules: [
+                {
+                  type: 'empty',
+                  prompt: 'Please enter your last name.'
+                }
+              ]
+            },
+            phone: {
+              identifier: 'phone',
+              rules: [
+                {
+                  type: 'empty',
+                  prompt: 'Please enter your phone number.'
                 }
               ]
             },
@@ -141,6 +163,104 @@ angular.module('reg')
                 {
                   type: 'empty',
                   prompt: 'Please select a gender.'
+                }
+              ]
+            },
+            race: {
+              identifier: 'race',
+              rules: [
+                {
+                  type: 'empty',
+                  prompt: 'Please select a race.'
+                }
+              ]
+            },
+            participationCount: {
+              identifier: 'participationCount',
+              rules: [
+                {
+                  type: 'empty',
+                  prompt: 'Please enter your previous Hackathon count.'
+                }
+              ]
+            },
+            resume: {
+              identifier: 'resume',
+              rules: [
+                {
+                  type: 'empty',
+                  prompt: 'Please upload your resume.'
+                }]
+            },
+            linkedin: {
+              identifier: 'linkedin',
+              rules: [
+                {
+                  type: 'empty',
+                  prompt: 'Please enter your LinkedIn profile.'
+                }
+              ]
+            },
+            github: {
+              identifier: 'github',
+              rules: [
+                {
+                  type: 'empty',
+                  prompt: 'Please enter your Github profile.'
+                }
+              ]
+            },
+            ssSize: {
+              identifier: 'ssSize',
+              rules: [
+                {
+                  type: 'empty',
+                  prompt: 'Please enter your sweatshirt size.'
+                }
+              ]
+            },
+            diet: {
+              identifier: 'diet',
+              rules: [
+                {
+                  type: 'empty',
+                  prompt: 'Please enter your dietary restrictions.'
+                }
+              ]
+            },
+            travel: {
+              identifier: 'travel',
+              rules: [
+                {
+                  type: 'empty',
+                  prompt: 'Please enter your travel plans.'
+                }
+              ]
+            },
+            discoveryMethod: {
+              identifier: 'discoveryMethod',
+              rules: [
+                {
+                  type: 'empty',
+                  prompt: 'Please enter how you heard about PickHacks.'
+                }
+              ]
+            },
+            codeAgreement: {
+              identifier: 'codeAgreement',
+              rules: [
+                {
+                  type: 'empty',
+                  prompt: 'You must accept the Code of Conduct'
+                }
+              ]
+            },
+            dataAgreement: {
+              identifier: 'dataAgreement',
+              rules: [
+                {
+                  type: 'empty',
+                  prompt: 'You must agree to the Privacy Policy and Terms & Conditions.'
                 }
               ]
             },
