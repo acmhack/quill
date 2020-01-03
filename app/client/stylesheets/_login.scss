@@ -1,46 +1,60 @@
-#login {
-  height: 100%;
-  width: 100%;
-  background-color: $login-bg-color;
-  background: $login-bg; 
-  background-size: cover;
-
-  > .container {
-    position: relative;
-    top: 50%;
-
-    -webkit-transform: translateY(-50%);
-    -ms-transform: translateY(-50%);
-    transform: translateY(-50%);
-
-    > .content {
-      max-width: 320px;
-      margin: 0 auto;
-
-      .logo {
-        max-width: 100px;
-        margin: .5rem auto 1rem auto;
-        img {
-          width: 100px;
-          height: 100px;
-        }
-      }
-
-      .button {
-        color: white;
-        &.login {
-          background: $login-color;
-        }
-        &.register {
-          background: $register-color
-        }
-      }
-
-      .forgot {
-        text-align: center;
-      }
-
-    }
-  }
-
+#login{
+    height:100%;
+    width:100%;
+    background-color:#121212;
+	background: linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ), url('https://pickhacks.io/images/intro-bg.jpg') 50% 0 repeat-y fixed;
+	background-size: cover;
+	background-position: center center;
+}
+#login>.container{
+    position:relative;
+    top:50%;
+    -webkit-transform:translateY(-50%);
+    -ms-transform:translateY(-50%);
+    transform:translateY(-50%);
+}
+#login>.container>.content{
+    max-width:320px;
+    margin:0 auto;
+}
+.ui.segment{
+	background-color: rgba(0,0,0,0) !important;
+	border-style: solid;
+	border-color: #FFF;
+	border-width: 0px;
+	border-radius: 0px;
+	color:#FFF !important;
+}
+.ui label{	color:#FFF !important;
+}
+p{
+	color: #FFF;
+	font-weight: bold;
+}
+a{
+	color:#EEF5DB !important;
+	font-weight: bold;
+}
+/*#login>.container>.content>.logo{
+    max-width:100px;
+    margin:.5rem auto 1rem auto
+}*/
+#login>.container>.content .logo img{
+    width:250px;
+    height:250px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+#login>.container>.content .button{
+    color:#fff
+}
+#login>.container>.content .button.login{
+    background:#32e550
+}
+#login>.container>.content .button.register{
+    background:#196578
+}
+#login>.container>.content .forgot{
+    text-align:center
 }
