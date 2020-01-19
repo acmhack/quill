@@ -40,6 +40,17 @@ angular.module('reg')
         });
       },
 
+      uploadResume: function(id, resume){
+        var formData = new FormData(); 
+        formData.append('resume', resume); 
+        // sends a put request to api with the resume as formdata
+        return $http.put(base + id + '/resume', formData, {
+          withCredentials: true,
+          headers: {'Content-Type': undefined},
+          transformRequest: angular.identity
+        });
+      },
+
       updateConfirmation: function(id, confirmation){
         return $http.put(base + id + '/confirm', {
           confirmation: confirmation
@@ -75,8 +86,12 @@ angular.module('reg')
         return $http.get(base + 'stats');
       },
 
-      admitUser: function(id){
-        return $http.post(base + id + '/admit');
+      admitUser: function(id,email){
+        return $http.post(base + id + '/' + email + '/admit');
+      },
+
+      declineUser: function(id,email){
+        return $http.post(base + id + '/' + email + '/decline');
       },
 
       checkIn: function(id){

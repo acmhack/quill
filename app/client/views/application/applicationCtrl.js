@@ -16,14 +16,6 @@ angular.module('reg')
       // Set up the user
       $scope.user = currentUser.data;
 
-      // Is the student from MIT?
-      $scope.isMitStudent = $scope.user.email.split('@')[1] == 'mit.edu';
-
-      // If so, default them to adult: true
-      if ($scope.isMitStudent){
-        $scope.user.profile.adult = true;
-      }
-
       // Populate the school dropdown
       populateSchools();
       _setupForm();
@@ -91,10 +83,6 @@ angular.module('reg')
       }
 
       function minorsValidation() {
-        // Are minors allowed to register?
-        if (isMinor() && !minorsAreAllowed()) {
-          return false;
-        }
         return true;
       }
 
@@ -105,7 +93,7 @@ angular.module('reg')
         };
 
         // Semantic-UI form validation
-        $('.ui.form').form({
+       $('.ui.form').form({
           inline: true,
           fields: {
             name: {
@@ -125,7 +113,7 @@ angular.module('reg')
                   prompt: 'Please enter your school name.'
                 }
               ]
-            },
+            },		  
             year: {
               identifier: 'year',
               rules: [

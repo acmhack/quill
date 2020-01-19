@@ -129,6 +129,64 @@ controller.sendVerificationEmail = function(email, token, callback) {
  * @param  {[type]}   token    [description]
  * @param  {Function} callback [description]
  */
+controller.sendStatusEmail = function(email, token, callback) {
+
+  var options = {
+    to: email,
+    subject: "["+HACKATHON_NAME+"] - Application Status Updated!"
+  };
+
+  var locals = {
+    title: 'Your application status has been changed',
+    subtitle: '',
+    description: 'Your application has been reviewed and we have changed your status. Please go back to your dashboard to view your current status',
+    actionUrl: ROOT_URL,
+    actionName: "Home"
+  };
+};
+
+/**
+ * Send a status update email.
+ * @param  {[type]}   email    [description]
+ * @param  {[type]}   token    [description]
+ * @param  {Function} callback [description]
+ */
+controller.sendStatusEmail = function(email, token, callback) {
+
+  var options = {
+    to: email,
+    subject: "["+HACKATHON_NAME+"] - Application Status Updated!"
+  };
+  
+  var locals = {
+    title: 'Status Update',
+    subtitle: '',
+    description: 'We have review your application and changed your status on the dashboard. Please navigate to our dashboard to view your status',
+    actionUrl: ROOT_URL,
+    actionName: "View Status"
+  };
+  sendOne('email-link-action', options, locals, function(err, info){
+    if (err){
+      console.log(err);
+    }
+    if (info){
+      console.log(info.message);
+    }
+    if (callback){
+      callback(err, info);
+    }
+  });
+
+};
+
+
+
+/**
+ * Send a password recovery email.
+ * @param  {[type]}   email    [description]
+ * @param  {[type]}   token    [description]
+ * @param  {Function} callback [description]
+ */
 controller.sendPasswordResetEmail = function(email, token, callback) {
 
   var options = {

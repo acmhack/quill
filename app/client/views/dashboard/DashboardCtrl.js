@@ -46,11 +46,11 @@ angular.module('reg')
           case 'openAndIncomplete':
             return regIsOpen && user.verified && !user.status.completedProfile;
           case 'openAndSubmitted':
-            return regIsOpen && user.status.completedProfile && !user.status.admitted;
+            return regIsOpen && user.status.completedProfile && !user.status.admitted && user.status.admittedBy == '';
           case 'closedAndIncomplete':
             return !regIsOpen && !user.status.completedProfile && !user.status.admitted;
           case 'closedAndSubmitted': // Waitlisted State
-            return !regIsOpen && user.status.completedProfile && !user.status.admitted;
+            return !regIsOpen && user.status.completedProfile && !user.status.admitted && user.status.admittedBy == '';
           case 'admittedAndCanConfirm':
             return !pastConfirmation &&
               user.status.admitted &&
@@ -61,7 +61,13 @@ angular.module('reg')
               user.status.admitted &&
               !user.status.confirmed &&
               !user.status.declined;
-          case 'confirmed':
+          case 'rejected':
+            return !pastConfirmation &&
+              !user.status.admitted &&
+              !user.status.confirmed &&
+              !user.status.declined &&
+	      user.status.admittedBy != '';
+	  case 'confirmed':
             return user.status.admitted && user.status.confirmed && !user.status.declined;
           case 'declined':
             return user.status.declined;

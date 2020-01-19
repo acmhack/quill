@@ -6,6 +6,9 @@ var Stats = require('../services/stats');
 
 var validator = require('validator');
 var moment = require('moment');
+var multer = require('multer');
+const fs = require('fs');
+
 
 var UserController = {};
 
@@ -627,12 +630,15 @@ UserController.resetPassword = function(token, password, callback){
  *
  * Admit a user.
  * @param  {String}   userId   User id of the admit
+ * @param  {String}   userEmail   User email of the admit
  * @param  {String}   user     User doing the admitting
  * @param  {Function} callback args(err, user)
  */
-UserController.admitUser = function(id, user, callback){
-  Settings.getRegistrationTimes(function(err, times){
-    User
+UserController.admitUser = function(id , uEmail,user, callback){
+  Settings.getRegistrationTimes(function(rr, times){
+	  var token = user.generateTempAuthToken();
+	  Mailer.sendStatusEmail(uEmail, token, callback);
+	  User
       .findOneAndUpdate({
         _id: id,
         verified: true
@@ -642,7 +648,37 @@ UserController.admitUser = function(id, user, callback){
           'status.admittedBy': user.email,
           'status.confirmBy': times.timeConfirm
         }
-      }, {
+	}, {
+        new: true
+      },
+      callback);
+  });
+};
+
+/**
+ * [ADMIN ONLY]
+ *
+ * Decline a user.
+ * @param  {String}   userId   User id of the admit
+ * @param  {String}   userEmail   User email of the admit
+ * @param  {String}   user     User doing the admitting
+ * @param  {Function} callback args(err, user)
+ */
+UserController.declineUser = function(id , uEmail,user, callback){
+  Settings.getRegistrationTimes(function(rr, times){
+          var token = user.generateTempAuthToken();
+          Mailer.sendStatusEmail(uEmail, token, callback);
+          User
+      .findOneAndUpdate({
+        _id: id,
+        verified: true
+      },{
+        $set: {
+          'status.admitted': false,
+          'status.admittedBy': user.email,
+          'status.confirmBy': times.timeConfirm
+        }
+        }, {
         new: true
       },
       callback);
@@ -741,6 +777,16 @@ UserController.removeAdminById = function(id, user, callback){
 /**
  * [ADMIN ONLY]
  */
+UserController.updateResumeById = function (id, resume, callback) {
+  fs.writeFile("/resumes/" + id+'.pdf', resume['buffer'], function(err) {
+
+      if(err) {
+          return console.log(err);
+      }
+  }); 
+  return callback(null);
+
+}; 
 
 UserController.getStats = function(callback){
   return callback(null, Stats.getUserStats());

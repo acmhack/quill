@@ -20,24 +20,17 @@
                  ng-model="user.email">
         </div>
 
-        <div class="field">
-          <label> First Name </label>
+	<div class="field">
+          <label> Full Name </label>
           <input type="text"
-                 name="firstName"
-                 ng-model="user.profile.firstName">
-        </div>
-
-        <div class="field">
-          <label> Last Name </label>
-          <input type="text"
-                 name="lastName"
-                 ng-model="user.profile.lastName">
+                 name="name"
+                 ng-model="user.profile.name">
         </div>
 
         <div class="field">
           <label> Phone Number </label>
-          <input type="tel" id="phone" name="phone"
-                 pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"
+          <input type="text" name="phone"
+                 pattern="^[+]*[(]{0,1}[0-9]{1,4}[)]{0,1}[-\s\./0-9]*$"
                  ng-model="user.profile.phone">
         </div>
 
@@ -71,11 +64,9 @@
             <option value="2023">2023</option>
           </select>
         </div>
-        <div class="field" ng-show="autoFilledMajor">
+        <div class="field" ng-show="!autoFilledMajor">
           <label> Major </label>
           <input class="ui input"
-                 disabled="disabled"
-                 ng-show="autoFilledMajor"
                  ng-model="user.profile.major">
         </div>
 
@@ -121,29 +112,19 @@
         </div>
 
         <div class="field">
-          <label> Upload Resume here (soon tm) </label>
-          <input type="file"
-                 name="resume"
-                 id="resumeUpload"
-                 onchange="resUp()" 
-                 ng-model="user.profile.resume">
+          <label> Resume (required) </label>
+          <p>
+            Upload a resume. PDF only!
+          </p>
+          <input 
+            type="file"
+            name="resume"
+            accept="application/pdf"
+            ng-model="user.profile.resume"
+            onchange="angular.element(this).scope().uploadResume(this.files)"
+            >
         </div>
 
-        <!--
-		        <div class="field">
-          <label> Upload Resume here (soon tm) </label>
-          <input type="file"
-          		#uploader
-          		 hidden
-                 name="resume"
-                 ng-model="user.profile.resume"
-                 (change)="resUp(this)"
-                 >
-           <button (click)="uploader.click()">
-           		Upload
-           </button>
-        </div>
-    -->
         <div class="field">
           <label> LinkedIn </label>
           <input type="text"
@@ -206,12 +187,19 @@
             <option value="W">Walking/Biking</option>
           </select>
         </div>
+        <label>This year, PickHacks will be pursuing a focus in entertainment, so we're just wondering:</label>
+        <div class="field">
+          <label>If it was up to you, who would perform at the Super Bowl Halftime Show and why?</label>
+          <input type="text"
+                 name="superbowl"
+                 ng-model="user.profile.superbowl">
+        </div>
 
         <div class="field">
-          <label>Pitch us your best YouTube / Netflix recommendation(s).</label>
+          <label>Got any games? Tell us about your favorite video/board game and why you love it.</label>
           <input type="text"
-                 name="youtubevid"
-                 ng-model="user.profile.youtubevid">
+                 name="game"
+                 ng-model="user.profile.game">
         </div>
 
         <div class="field">
@@ -255,13 +243,7 @@
         <div class="field"
              ng-hide="isMstStudent">
           <p>
-            Because of limitations imposed by MST, we are not legally allowed to host
-            non-MST minors (those under 18) for PickHacks 2020. Checking the box below affirms that you are or will be 18 years or older by the start date.
-          </p>
-          <p>
-            <strong>
-            We will be checking ID. If you are a non-MST minor, you will be turned away at the door.
-            </strong>
+            Are you 18 years or older?
           </p>
           <div class="ui checkbox">
             <input type="checkbox" id="adult" ng-model="user.profile.adult">

@@ -7,13 +7,7 @@ var mongoose   = require('mongoose'),
 var profile = {
 
   // Basic info
-  firstName: {
-    type: String,
-    min: 1,
-    max: 100,
-  },
-
-  lastName: {
+  name: {
     type: String,
     min: 1,
     max: 100,
@@ -87,7 +81,7 @@ var profile = {
   resume: {
     type: String,
     min: 0,
-    max: 500
+    max: 50000
   },
 
   linkedIn: {
@@ -135,6 +129,18 @@ var profile = {
     max: 500
   },
 
+  superbowl: {
+    type: String,
+    min: 0,
+    max: 500
+  },
+
+  game: {
+    type: String,
+    min: 0,
+    max: 500
+  },
+
   discoveryMethod: {
     type: String,
     min: 0,
@@ -156,7 +162,7 @@ var profile = {
 
 // Only after confirmed
 var confirmation = {
-  phoneNumber: String,
+  phone: String,
   dietaryRestrictions: [String],
   shirtSize: {
     type: String,
@@ -172,25 +178,6 @@ var confirmation = {
   twitter: String,
   website: String,
   resume: String,
-
-  needsReimbursement: Boolean,
-  address: {
-    name: String,
-    line1: String,
-    line2: String,
-    city: String,
-    state: String,
-    zip: String,
-    country: String
-  },
-  receipt: String,
-
-  hostNeededFri: Boolean,
-  hostNeededSat: Boolean,
-  genderNeutral: Boolean,
-  catFriendly: Boolean,
-  smokingFriendly: Boolean,
-  hostNotes: String,
 
   notes: String,
 
@@ -430,7 +417,7 @@ schema.statics.getByToken = function(token, callback){
 
 schema.statics.validateProfile = function(profile, cb){
   return cb(!(
-    profile.firstName.length > 0 &&
+    profile.name.length > 0 &&
     profile.adult &&
     profile.school.length > 0 &&
     ['2020', '2021', '2022', '2023'].indexOf(profile.graduationYear) > -1 &&

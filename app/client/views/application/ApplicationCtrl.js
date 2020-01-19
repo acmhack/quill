@@ -1,5 +1,6 @@
 const angular = require("angular");
 const swal = require("sweetalert");
+// const formidable = require('formidable');
 
 angular.module('reg')
   .controller('ApplicationCtrl', [
@@ -15,9 +16,11 @@ angular.module('reg')
 
       // Set up the user
       $scope.user = currentUser.data;
+      // console.log(currentUser.data);
 
-      // Is the student from MIT?
+      // Is the student from S&T?
       $scope.isUmStudent = $scope.user.email.split('@')[1] == 'umsystem.edu';
+      $scope.resume = null;
 
       // If so, default them to adult: true
       if ($scope.isUmStudent){
@@ -70,11 +73,8 @@ angular.module('reg')
           });
       }
 
-      function resUp(files){
-        console.log(files)
-      }
-
       function _updateUser(e){
+        console.log($scope.user);
         UserService
           .updateProfile(Session.getUserId(), $scope.user.profile)
           .then(response => {
@@ -91,7 +91,7 @@ angular.module('reg')
       }
 
       function minorsAreAllowed() {
-        return settings.data.allowMinors;
+        return true;
       }
 
       function minorsValidation() {
@@ -101,32 +101,28 @@ angular.module('reg')
         }
         return true;
       }
-
+      function resumeValidation() {
+        return true;
+      }
       function _setupForm(){
         // Custom minors validation rule
         $.fn.form.settings.rules.allowMinors = function (value) {
           return minorsValidation();
         };
+        $.fn.form.settings.rules.emptyResume = function (value) {
+          return resumeValidation();
 
+        };
         // Semantic-UI form validation
         $('.ui.form').form({
           inline: true,
           fields: {
-            firstName: {
-              identifier: 'firstName',
+            name: {
+              identifier: 'name',
               rules: [
                 {
                   type: 'empty',
-                  prompt: 'Please enter your first name.'
-                }
-              ]
-            },
-            lastName: {
-              identifier: 'lastName',
-              rules: [
-                {
-                  type: 'empty',
-                  prompt: 'Please enter your last name.'
+                  prompt: 'Please enter your full name.'
                 }
               ]
             },
@@ -188,7 +184,7 @@ angular.module('reg')
               identifier: 'resume',
               rules: [
                 {
-                  type: 'empty',
+                  type: 'emptyResume',
                   prompt: 'Please upload your resume.'
                 }]
             },
@@ -237,6 +233,24 @@ angular.module('reg')
                 }
               ]
             },
+            superbowl: {
+              identifier: 'superbowl',
+              rules: [
+                {
+                  type: 'empty',
+                  prompt: 'Please enter your Super Bowl choice.'
+                }
+              ]
+            },
+            game: {
+              identifier: 'game',
+              rules: [
+                {
+                  type: 'empty',
+                  prompt: 'Please enter your favorite game'
+                }
+              ]
+            },
             discoveryMethod: {
               identifier: 'discoveryMethod',
               rules: [
@@ -263,15 +277,6 @@ angular.module('reg')
                   prompt: 'You must agree to the Privacy Policy and Terms & Conditions.'
                 }
               ]
-            },
-            adult: {
-              identifier: 'adult',
-              rules: [
-                {
-                  type: 'allowMinors',
-                  prompt: 'You must be an adult, or an UM System student.'
-                }
-              ]
             }
           }
         });
@@ -284,4 +289,14 @@ angular.module('reg')
           swal("Uh oh!", "Please Fill The Required Fields", "error");
         }
       };
+
+      $scope.uploadResume = function(files) {
+        UserService
+          .uploadResume(Session.getUserId(), files[0])
+          .then(response => {
+            $scope.user.profile.resume = true;
+          }, response => {
+            $scope.user.profile.resume = false;
+          });
+       }
     }]);

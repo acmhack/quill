@@ -2,6 +2,9 @@ var UserController = require('../controllers/UserController');
 var SettingsController = require('../controllers/SettingsController');
 
 var request = require('request');
+var multer = require('multer');
+var upload = multer();
+
 
 module.exports = function(router) {
 
@@ -240,18 +243,38 @@ module.exports = function(router) {
     //   return res.json(user);
     // });
   });
+  router.put('/users/:id/resume', isOwnerOrAdmin, upload.any(), function(req, res){
+    var resume = req.files[0];
+    var id = req.params.id;
 
+    UserController.updateResumeById(id, resume, defaultResponse(req, res));
+  });
   /**
    * Admit a user. ADMIN ONLY, DUH
    *
    * Also attaches the user who did the admitting, for liabaility.
    */
-  router.post('/users/:id/admit', isAdmin, function(req, res){
+  router.post('/users/:id/:email/admit', isAdmin, function(req, res){
     // Accept the hacker. Admin only
     var id = req.params.id;
+    var email = req.params.email;  
     var user = req.user;
-    UserController.admitUser(id, user, defaultResponse(req, res));
+    UserController.admitUser(id, email ,user, defaultResponse(req, res));
   });
+
+  /**
+   * Decline a user. ADMIN ONLY, DUH
+   *
+   * Also attaches the user who did the admitting, for liabaility.
+   */
+  router.post('/users/:id/:email/decline', isAdmin, function(req, res){
+    // Decline the hacker. Admin only
+    var id = req.params.id;
+    var email = req.params.email;
+    var user = req.user;
+    UserController.declineUser(id, email ,user, defaultResponse(req, res));
+  });
+
 
   /**
    * Check in a user. ADMIN ONLY, DUH

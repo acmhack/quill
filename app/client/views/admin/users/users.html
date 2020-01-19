@@ -1,3 +1,6 @@
+<style>
+p    {color: black;}
+</style>
 <div class="ui segment">
 
   <div class="ui stackable grid">
@@ -223,6 +226,13 @@
               <button
                 class="accept ui circular mini basic green icon button"
                 ng-click="acceptUser($event, user, $index)">
+                <i class="add user icon"></i>
+              </button>
+
+	      <button
+                class="accept ui circular mini basic green icon button"
+                style = "color: red !important;"
+		ng-click="declineUser($event, user, $index)">
                 <i class="add user icon"></i>
               </button>
 

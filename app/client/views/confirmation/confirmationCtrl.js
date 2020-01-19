@@ -11,16 +11,15 @@ angular.module('reg')
     function($scope, $rootScope, $state, currentUser, Utils, UserService){
 
       // Set up the user
-      var user = currentUser.data;
-      $scope.user = user;
+      $scope.user = currentUser.data;
 
-      $scope.pastConfirmation = Date.now() > user.status.confirmBy;
+	    $scope.pastConfirmation = Date.now() > $scope.user.status.confirmBy;
 
       $scope.formatTime = Utils.formatTime;
 
       _setupForm();
 
-      $scope.fileName = user._id + "_" + user.profile.name.split(" ").join("_");
+      $scope.fileName = $scope.user._id + "_" + $scope.user.profile.name.split(" ").join("_");
 
       // -------------------------------
       // All this just for dietary restriction checkboxes fml
@@ -30,11 +29,11 @@ angular.module('reg')
         'Vegan': false,
         'Halal': false,
         'Kosher': false,
-        'Nut Allergy': false
+        'Nut Allergy': false,
       };
 
-      if (user.confirmation.dietaryRestrictions){
-        user.confirmation.dietaryRestrictions.forEach(function(restriction){
+      if ($scope.user.confirmation.dietaryRestrictions){
+        $scope.user.confirmation.dietaryRestrictions.forEach(function(restriction){
           if (restriction in dietaryRestrictions){
             dietaryRestrictions[restriction] = true;
           }
@@ -124,6 +123,7 @@ angular.module('reg')
         if ($('.ui.form').form('is valid')){
           _updateUser();
         }
+	      console.log("hi");
       };
 
     }]);

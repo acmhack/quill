@@ -164,10 +164,75 @@ angular.module('reg')
             }
 
             UserService
-              .admitUser(user._id)
+              .admitUser(user._id,user.email)
               .then(response => {
                 $scope.users[index] = response.data;
                 swal("Accepted", response.data.profile.name + ' has been admitted.', "success");
+	      });
+	    
+          });
+        });
+      };
+	
+      $scope.declineUser = function($event, user, index) {
+        $event.stopPropagation();
+
+        console.log(user);
+
+        swal({
+          buttons: {
+            cancel: {
+              text: "Cancel",
+              value: null,
+              visible: true
+            },
+            accept: {
+              className: "danger-button",
+              closeModal: false,
+              text: "Yes, accept them",
+              value: true,
+              visible: true
+            }
+          },
+          dangerMode: true,
+          icon: "warning",
+          text: "You are about to reject " + user.profile.name + "!",
+          title: "Whoa, wait a minute!"
+        }).then(value => {
+          if (!value) {
+            return;
+          }
+
+          swal({
+            buttons: {
+              cancel: {
+                text: "Cancel",
+                value: null,
+                visible: true
+              },
+              yes: {
+                className: "danger-button",
+                closeModal: false,
+                text: "Yes, reject this user",
+                value: true,
+                visible: true
+              }
+            },
+            dangerMode: true,
+            title: "Are you sure?",
+            text: "Your account will be logged as having rejected this user. " +
+              "Remember, this power is a privilege.",
+            icon: "warning"
+          }).then(value => {
+            if (!value) {
+              return;
+            }
+
+            UserService
+              .declineUser(user._id,user.email)
+              .then(response => {
+                $scope.users[index] = response.data;
+                swal("Rejected", response.data.profile.name + ' has been rejected.', "success");
               });
           });
         });
@@ -273,7 +338,7 @@ angular.module('reg')
             fields: [
               {
                 name: 'Name',
-                value: user.profile.name
+                value: user.profile.firstName + ' ' + user.profile.lastName
               },{
                 name: 'Gender',
                 value: user.profile.gender
@@ -287,8 +352,11 @@ angular.module('reg')
                 name: 'Description',
                 value: user.profile.description
               },{
-                name: 'Essay',
-                value: user.profile.essay
+                name: 'Preferred SuperBowl Halftime Show',
+                value: user.profile.superbowl
+              },{
+                name: 'Favorite Game',
+                value: user.profile.game
               }
             ]
           },{
@@ -296,29 +364,25 @@ angular.module('reg')
             fields: [
               {
                 name: 'Phone Number',
-                value: user.confirmation.phoneNumber
+                value: user.profile.phone
               },{
                 name: 'Dietary Restrictions',
-                value: user.confirmation.dietaryRestrictions.join(', ')
+                value: user.profile.diet
               },{
                 name: 'Shirt Size',
-                value: user.confirmation.shirtSize
+                value: user.profile.ssSize
               },{
                 name: 'Major',
-                value: user.confirmation.major
+                value: user.profile.major
               },{
                 name: 'Github',
-                value: user.confirmation.github
+                value: user.profile.github
+              },{
+                name: 'LinkedIn',
+                value: user.profile.linkedIn
               },{
                 name: 'Website',
-                value: user.confirmation.website
-              },{
-                name: 'Needs Hardware',
-                value: user.confirmation.wantsHardware,
-                type: 'boolean'
-              },{
-                name: 'Hardware Requested',
-                value: user.confirmation.hardware
+                value: user.profile.otherSites
               }
             ]
           },{
