@@ -19,7 +19,7 @@ angular.module('reg')
       // console.log(currentUser.data);
 
       // Is the student from S&T?
-      $scope.isUmStudent = $scope.user.email.split('@')[1] == 'umsystem.edu';
+      $scope.isUmStudent = $scope.user.email.split('@')[1] == 'mst.edu';
       $scope.resume = null;
 
       // If so, default them to adult: true
@@ -101,16 +101,71 @@ angular.module('reg')
         }
         return true;
       }
-      function resumeValidation() {
+      function nameValidation() {
+        return true;
+      }
+      function phoneValidation() {
+        return true;
+      }
+      function schoolValidation() {
+        return true;
+      }
+      function yearValidation() {
+        return true;
+      }
+      function genderValidation() {
+        return true;
+      }
+      function raceValidation() {
+        return true;
+      }
+      function participationValidation() {
+        return true;
+      }
+      function dataValidation() {
+        return true;
+      }
+      function codeValidation() {
         return true;
       }
       function _setupForm(){
         // Custom minors validation rule
         $.fn.form.settings.rules.allowMinors = function (value) {
           return minorsValidation();
+        },
+	$.fn.form.settings.rules.emptyName = function (value) {
+          return nameValidation();
+
+        },      
+        $.fn.form.settings.rules.emptyPhone = function (value) {
+          return phoneValidation();
+
+        },
+        $.fn.form.settings.rules.emptySchool = function (value) {
+          return schoolValidation();
+
         };
-        $.fn.form.settings.rules.emptyResume = function (value) {
-          return resumeValidation();
+        $.fn.form.settings.rules.emptyYear = function (value) {
+          return yearValidation();
+
+        };
+        $.fn.form.settings.rules.emptyGender = function (value) {
+          return genderValidation();
+        };
+        $.fn.form.settings.rules.emptyRace = function (value) {
+          return raceValidation();
+
+        };
+        $.fn.form.settings.rules.emptyParticipation = function (value) {
+          return participationValidation();
+
+        };
+        $.fn.form.settings.rules.emptyData = function (value) {
+          return dataValidation();
+
+        };
+        $.fn.form.settings.rules.emptyCode = function (value) {
+          return codeValidation();
 
         };
         // Semantic-UI form validation
@@ -121,7 +176,7 @@ angular.module('reg')
               identifier: 'name',
               rules: [
                 {
-                  type: 'empty',
+                  type: 'emptyName',
                   prompt: 'Please enter your full name.'
                 }
               ]
@@ -130,7 +185,7 @@ angular.module('reg')
               identifier: 'phone',
               rules: [
                 {
-                  type: 'empty',
+                  type: 'emptyPhone',
                   prompt: 'Please enter your phone number.'
                 }
               ]
@@ -139,7 +194,7 @@ angular.module('reg')
               identifier: 'school',
               rules: [
                 {
-                  type: 'empty',
+                  type: 'emptySchool',
                   prompt: 'Please enter your school name.'
                 }
               ]
@@ -148,7 +203,7 @@ angular.module('reg')
               identifier: 'year',
               rules: [
                 {
-                  type: 'empty',
+                  type: 'emptyYear',
                   prompt: 'Please select your graduation year.'
                 }
               ]
@@ -157,7 +212,7 @@ angular.module('reg')
               identifier: 'gender',
               rules: [
                 {
-                  type: 'empty',
+                  type: 'emptyGender',
                   prompt: 'Please select a gender.'
                 }
               ]
@@ -166,7 +221,7 @@ angular.module('reg')
               identifier: 'race',
               rules: [
                 {
-                  type: 'empty',
+                  type: 'emptyRace',
                   prompt: 'Please select a race.'
                 }
               ]
@@ -175,43 +230,8 @@ angular.module('reg')
               identifier: 'participationCount',
               rules: [
                 {
-                  type: 'empty',
+                  type: 'emptyParticipation',
                   prompt: 'Please enter your previous Hackathon count.'
-                }
-              ]
-            },
-            resume: {
-              identifier: 'resume',
-              rules: [
-                {
-                  type: 'emptyResume',
-                  prompt: 'Please upload your resume.'
-                }]
-            },
-            linkedin: {
-              identifier: 'linkedin',
-              rules: [
-                {
-                  type: 'empty',
-                  prompt: 'Please enter your LinkedIn profile.'
-                }
-              ]
-            },
-            github: {
-              identifier: 'github',
-              rules: [
-                {
-                  type: 'empty',
-                  prompt: 'Please enter your Github profile.'
-                }
-              ]
-            },
-            ssSize: {
-              identifier: 'ssSize',
-              rules: [
-                {
-                  type: 'empty',
-                  prompt: 'Please enter your sweatshirt size.'
                 }
               ]
             },
@@ -224,47 +244,11 @@ angular.module('reg')
                 }
               ]
             },
-            travel: {
-              identifier: 'travel',
-              rules: [
-                {
-                  type: 'empty',
-                  prompt: 'Please enter your travel plans.'
-                }
-              ]
-            },
-            superbowl: {
-              identifier: 'superbowl',
-              rules: [
-                {
-                  type: 'empty',
-                  prompt: 'Please enter your Super Bowl choice.'
-                }
-              ]
-            },
-            game: {
-              identifier: 'game',
-              rules: [
-                {
-                  type: 'empty',
-                  prompt: 'Please enter your favorite game'
-                }
-              ]
-            },
-            discoveryMethod: {
-              identifier: 'discoveryMethod',
-              rules: [
-                {
-                  type: 'empty',
-                  prompt: 'Please enter how you heard about PickHacks.'
-                }
-              ]
-            },
             codeAgreement: {
               identifier: 'codeAgreement',
               rules: [
                 {
-                  type: 'empty',
+                  type: 'emptyCode',
                   prompt: 'You must accept the Code of Conduct'
                 }
               ]
@@ -273,7 +257,7 @@ angular.module('reg')
               identifier: 'dataAgreement',
               rules: [
                 {
-                  type: 'empty',
+                  type: 'emptyData',
                   prompt: 'You must agree to the Privacy Policy and Terms & Conditions.'
                 }
               ]

@@ -1,55 +1,71 @@
-#dashboard .status{
-    text-align:center
-}
-#dashboard .status p{
-    text-align:left
-}
-#dashboard .status .button{
-    margin-top:12px
-}
-#dashboard .status .header{
-    font-size:1.2em
-}
-#dashboard .status .state{
-    text-align:center;
-    padding:12px 24px;
-    margin-bottom:1em;
-    color:#fff;
-    font-size:1.3em;
-    text-transform:uppercase
-}
-#dashboard .status .state.unverified{
-    background:#525252
-}
-#dashboard .status .state.incomplete{
-    background:#f5f5f5;
-    color:#000
-}
-#dashboard .status .state.submitted{
-    background:#88d8bd
-}
-#dashboard .status .state.waitlist{
-    background:#196578
-}
-#dashboard .status .state.admitted{
-    background:#32e550
-}
-#dashboard .status .state.confirmed{
-    background:#3ebc92
-}
-#dashboard .status .state.checked.in{
-    background:#3ebc92
-}
-#dashboard .status .state.declined{
-    background:#196578
-}
-#dashboard .segment{
-    padding:36px 36px 12px 36px
-}
-#dashboard .description{
-    margin-bottom:24px
-}
-#dashboard .description .markdown{
-    text-align:left;
-    margin-bottom:24px
+#dashboard {
+  .status {
+    text-align: center;
+    p {
+      text-align: center;
+    }
+    .button {
+      margin-top: 12px;
+    }
+    .header {
+      font-size: 1.2em;
+    }
+    .state {
+      text-align: center;
+      padding: 12px 24px;
+      margin-bottom: 1em;
+      color: black;
+      font-size: 1.3em;
+      text-transform: uppercase;
+
+      &.unverified {
+        background: $status-unverified-color;
+      }
+
+      &.incomplete {
+        background: $status-incomplete-color;
+        color: black;
+      }
+
+      &.submitted {
+        background: $status-submitted-color;
+        color: white;
+      }
+
+      //THIS IS REJECTED 
+      &.waitlist {
+        background: $status-waitlist-color;
+        color: white;
+      }
+
+      &.admitted {
+        background: $status-admitted-color;
+        color: white;
+      }
+
+      &.confirmed {
+        background: $status-confirmed-color;
+      }
+
+      &.checked.in {
+        background: $status-checkedin-color;
+      }
+
+      &.declined {
+        background: $status-declined-color;
+      }
+    }
+  }
+
+  .segment {
+    padding: 36px 36px 12px 36px;
+  }
+
+  .description {
+    margin-bottom: 24px;
+    .markdown {
+      text-align: center;
+      margin-bottom: 24px;
+    }
+  }
 }

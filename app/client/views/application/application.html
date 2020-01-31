@@ -13,7 +13,7 @@
         <fieldset ng-disabled="regIsClosed">
 
         <div class="field">
-          <label> Email </label>
+          <label class="required"> Email </label>
           <input type="email"
                  name="email"
                  disabled="disabled"
@@ -21,29 +21,29 @@
         </div>
 
 	<div class="field">
-          <label> Full Name </label>
+	<label class="required"> Full Name </label>
           <input type="text"
                  name="name"
                  ng-model="user.profile.name">
         </div>
 
         <div class="field">
-          <label> Phone Number </label>
+          <label class="required"> Phone Number </label>
           <input type="text" name="phone"
                  pattern="^[+]*[(]{0,1}[0-9]{1,4}[)]{0,1}[-\s\./0-9]*$"
                  ng-model="user.profile.phone">
         </div>
 
         <div class="field" ng-show="autoFilledSchool">
-          <label> School </label>
-          <input class="ui input"
+          <label class="required"> School </label>
+	  <input class="ui input"
                  disabled="disabled"
                  ng-show="autoFilledSchool"
                  ng-model="user.profile.school">
         </div>
 
         <div class="field" ng-show="!autoFilledSchool">
-          <label> School </label>
+          <label class="required"> School </label>
           <div id="school" class="ui search">
             <div class="ui input">
               <input class="prompt" type="text" placeholder="School" name="school" ng-model="user.profile.school">                
@@ -53,26 +53,27 @@
         </div>
 
         <div class="field">
-          <label>Graduation Year</label>
-          <select
+          <label class="required">Graduation Year</label>
+	  <select
             name="year"
             ng-model="user.profile.graduationYear">
-            <option value="">Graduation Year</option>
-            <option value="2020">2020</option>
+            <option value="Graduate">Graduate Student</option>
+	    <option value="2020">2020</option>
             <option value="2021">2021</option>
             <option value="2022">2022</option>
             <option value="2023">2023</option>
-          </select>
+	    <option value="Highschool">Highschool</option>
+	  </select>
         </div>
         <div class="field" ng-show="!autoFilledMajor">
-          <label> Major </label>
+          <label class="required"> Major </label>
           <input class="ui input"
                  ng-model="user.profile.major">
         </div>
 
 
         <div class="field">
-          <label>Gender</label>
+          <label class="required">Gender</label>
           <select
             name="gender"
             ng-model="user.profile.gender">
@@ -84,7 +85,7 @@
         </div>
 
         <div class="field">
-          <label>Race</label>
+          <label class="required">Race</label>
           <select
             name="race"
             ng-model="user.profile.race">
@@ -100,7 +101,7 @@
         </div>
 
         <div class="field">
-          <label>How many hackathons have you participated in?</label>
+          <label class="required">How many hackathons have you participated in?</label>
           <select
             name="participationCount"
             ng-model="user.profile.participationCount">
@@ -112,7 +113,7 @@
         </div>
 
         <div class="field">
-          <label> Resume (required) </label>
+          <label> Resume  </label>
           <p>
             Upload a resume. PDF only!
           </p>
@@ -140,26 +141,14 @@
         </div>
 
         <div class="field">
-          <label> Any other sites you want to share? </label>
+		<label> Any other sites you want to share? </label>
           <input type="text"
                  name="otherSites"
                  ng-model="user.profile.otherSites">
         </div>
 
         <div class="field">
-          <label>What is your sweatshirt size?</label>
-          <select
-            name="ssSize"
-            ng-model="user.profile.ssSize">
-            <option value="S">Small</option>
-            <option value="M">Medium</option>
-            <option value="L">Large</option>
-            <option value="X">X-Large</option>
-          </select>
-        </div>
-
-        <div class="field">
-          <label>Any dietary restrictions?</label>
+          <label class="required">Any dietary restrictions?</label>
           <select
             name="diet"
             ng-model="user.profile.diet">
@@ -187,21 +176,23 @@
             <option value="W">Walking/Biking</option>
           </select>
         </div>
-        <label>This year, PickHacks will be pursuing a focus in entertainment, so we're just wondering:</label>
-        <div class="field">
-          <label>If it was up to you, who would perform at the Super Bowl Halftime Show and why?</label>
-          <input type="text"
-                 name="superbowl"
-                 ng-model="user.profile.superbowl">
+	<br>
+	<p class="line"></p>
+	<label><b>This year’s PickHacks is all about entertainment, so please entertain us by answering these questions:</b></label>
+	<p style="font-weight: normal; font-size: 75%"><i>Note: these questions are optional, but highly encouraged for your application.</i></p>
+	<div class="field">
+          <label>If you could be a fictional character for a day, who would you be and what would you do?</label>
+                 <textarea
+	  	ng-model="user.profile.superbowl"></textarea>
         </div>
 
         <div class="field">
-          <label>Got any games? Tell us about your favorite video/board game and why you love it.</label>
-          <input type="text"
-                 name="game"
-                 ng-model="user.profile.game">
+          <label>Got any games? Tell us about your favorite video/board/party game and why you love it.</label>
+	  <textarea
+	     ng-model="user.profile.game"></textarea>
         </div>
-
+	<br>
+	<p class="line"></p>
         <div class="field">
           <label>How did you hear about PickHacks?</label>
           <select
@@ -219,42 +210,38 @@
         </div>
 
         <div class="field"
-             ng-hide="codeAgreement">
-          <p>Code of Conduct:</p><a href="https://static.mlh.io/docs/mlh-code-of-conduct.pdf">https://static.mlh.io/docs/mlh-code-of-conduct.pdf</a>
-          <p></p>
+	     ng-hide="codeAgreement">
+		<p class="required">Code of Conduct:</p><p></p>
           <div class="ui checkbox">
             <input type="checkbox" id="codeAgreement" ng-model="user.profile.codeAgreement">
-            <label for="codeAgreement">I have read and agree to the code of conduct.</label>
+	    <label for="codeAgreement">I have read and agree to the <a href="https://static.mlh.io/docs/mlh-code-of-conduct.pdf">MLH Code of Conduct.</a></label>
           </div>
         </div>
 
         <div class="field"
              ng-hide="dataAgreement">
-          <p>Privacy Policy:</p><a href="https://mlh.io/privacy">https://mlh.io/privacy</a><p></p>
-          <p>Terms & Conditions:</p><a href="https://github.com/MLH/mlh-policies/tree/master/prize-terms-and-conditions">https://github.com/MLH/mlh-policies/tree/master/prize-terms-and-conditions</a><p></p>
-          <p>"I authorize you to share my application/registration information for event administration, ranking, MLH administration, pre- and post-event informational e-mails, and occasional messages about hackathons in-line with the MLH Privacy Policy. I further I agree to the terms of both the MLH Contest Terms and Conditions and the MLH Privacy Policy."</p><p></p>
+          <p class="required">Privacy Policy/Terms & Conditions:</p><p></p>
+	  <p style="font-weight: normal;">I authorize you to share my application/registration information for event administration, ranking, MLH administration, pre- and post-event informational e-mails, 		and occasional messages about hackathons in-line with the MLH Privacy Policy. I further I agree to the terms of both the
+	  <a href="https://github.com/MLH/mlh-policies/tree/master/prize-terms-and-conditions"> MLH Contest Terms and Conditions</a> and the 
+	  <a href="https://mlh.io/privacy">MLH Privacy Policy.</a></p>
           <div class="ui checkbox">
             <input type="checkbox" id="dataAgreement" ng-model="user.profile.dataAgreement">
             <label for="dataAgreement">I agree.</label>
           </div>
         </div>
-
-
-        <div class="field"
-             ng-hide="isMstStudent">
-          <p>
-            Are you 18 years or older?
-          </p>
-          <div class="ui checkbox">
+	<br>
+	<div class="field">
+                 <p>Are you an Adult?</p><p></p>
+        </div>
+        <div class="ui checkbox">
             <input type="checkbox" id="adult" ng-model="user.profile.adult">
             <label for="adult">I am 18 or older.</label>
-          </div>
         </div>
+	<br>
+	<br>
+	<br>
 
-
-        <br>
-
-        <div class="field" ng-hide="regIsClosed">
+	<div class="field" ng-hide="regIsClosed">
           <button type="submit"
                   class="fluid ui purple button"
                   ng-click="submitForm()">

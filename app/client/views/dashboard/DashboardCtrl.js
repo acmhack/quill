@@ -61,21 +61,19 @@ angular.module('reg')
               user.status.admitted &&
               !user.status.confirmed &&
               !user.status.declined;
-          case 'rejected':
-            return !pastConfirmation &&
-              !user.status.admitted &&
-              !user.status.confirmed &&
-              !user.status.declined &&
-	      user.status.admittedBy != '';
+	  case 'checkedIn':
+	    return !pastConfirmation && user.status.checkedIn;
+	  case 'rejected':
+            return !pastConfirmation && user.status.rejected;
 	  case 'confirmed':
             return user.status.admitted && user.status.confirmed && !user.status.declined;
           case 'declined':
-            return user.status.declined;
+            return user.status.declined && !user.status.checkedIn;
         }
         return false;
       };
 
-      $scope.showWaitlist = !regIsOpen && user.status.completedProfile && !user.status.admitted;
+      $scope.showWaitlist =  user.status.completedProfile && user.status.rejected;
 
       $scope.resendEmail = function(){
         AuthService

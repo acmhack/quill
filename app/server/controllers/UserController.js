@@ -645,6 +645,7 @@ UserController.admitUser = function(id , uEmail,user, callback){
       },{
         $set: {
           'status.admitted': true,
+	  'status.rejected': false,
           'status.admittedBy': user.email,
           'status.confirmBy': times.timeConfirm
         }
@@ -675,7 +676,8 @@ UserController.declineUser = function(id , uEmail,user, callback){
       },{
         $set: {
           'status.admitted': false,
-          'status.admittedBy': user.email,
+          'status.rejected': true,
+	  'status.admittedBy': user.email,
           'status.confirmBy': times.timeConfirm
         }
         }, {

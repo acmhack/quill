@@ -22,6 +22,7 @@
     "moment": "^2.23.0",
     "mongoose": "^5.4.2",
     "morgan": "^1.9.1",
+    "multer": "^1.4.2",
     "nodemailer": "^4.7.0",
     "nodemailer-smtp-transport": "^2.7.4",
     "peer": "^0.2.10",
@@ -43,12 +44,14 @@
   "devDependencies": {
     "gulp": "^3.9.0",
     "gulp-clean-css": "^4.0.0",
+    "gulp-cli": "^2.2.0",
     "gulp-concat": "^2.6.1",
     "gulp-ng-annotate": "^2.1.0",
     "gulp-nodemon": "^2.4.2",
     "gulp-sass": "^4.0.2",
     "gulp-sourcemaps": "^2.6.4",
     "gulp-uglify": "^3.0.1",
+    "gulp-util": "^3.0.8",
     "nodemon": "^1.18.9"
   },
   "engines": {

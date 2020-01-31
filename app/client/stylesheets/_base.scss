@@ -1,5 +1,5 @@
 #base{
-    background:#FFF;
+    background:$sidebar-color;
     width:100%;
     height:100%
 }
@@ -7,7 +7,7 @@
     width:100%;
     min-height:100%;
     padding-left:265px;
-    background:#4F6367;
+    background:$sidebar-color;
     box-shadow:0 0 8px rgba(0,0,0,.4);
     transition:padding-left .5s
 }

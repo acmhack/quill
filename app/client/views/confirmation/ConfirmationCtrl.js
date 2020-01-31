@@ -24,7 +24,7 @@ angular.module('reg')
       // -------------------------------
       // All this just for dietary restriction checkboxes fml
 
-      var dietaryRestrictions = {
+     /* var dietaryRestrictions = {
         'Vegetarian': false,
         'Vegan': false,
         'Halal': false,
@@ -41,20 +41,20 @@ angular.module('reg')
       }
 
       $scope.dietaryRestrictions = dietaryRestrictions;
-
+    */
       // -------------------------------
 
       function _updateUser(e){
         var confirmation = $scope.user.confirmation;
         // Get the dietary restrictions as an array
-        var drs = [];
+        /*var drs = [];
         Object.keys($scope.dietaryRestrictions).forEach(function(key){
           if ($scope.dietaryRestrictions[key]){
             drs.push(key);
           }
         });
         confirmation.dietaryRestrictions = drs;
-
+*/
         UserService
           .updateConfirmation($scope.user._id, confirmation)
           .then(response => {
@@ -69,34 +69,8 @@ angular.module('reg')
       function _setupForm(){
         // Semantic-UI form validation
         $('.ui.form').form({
-          fields: {
-            shirt: {
-              identifier: 'shirt',
-              rules: [
-                {
-                  type: 'empty',
-                  prompt: 'Please give us a shirt size!'
-                }
-              ]
-            },
-            phone: {
-              identifier: 'phone',
-              rules: [
-                {
-                  type: 'empty',
-                  prompt: 'Please enter a phone number.'
-                }
-              ]
-            },
-            signatureLiability: {
-              identifier: 'signatureLiabilityWaiver',
-              rules: [
-                {
-                  type: 'empty',
-                  prompt: 'Please type your digital signature.'
-                }
-              ]
-            },
+          inline: true,
+	  fields: {
             signaturePhotoRelease: {
               identifier: 'signaturePhotoRelease',
               rules: [
@@ -106,12 +80,21 @@ angular.module('reg')
                 }
               ]
             },
-            signatureCodeOfConduct: {
-              identifier: 'signatureCodeOfConduct',
+	    signatureDate: {
+              identifier: 'signatureDate',
               rules: [
                 {
                   type: 'empty',
-                  prompt: 'Please type your digital signature.'
+                  prompt: 'Please enter today date.'
+                }
+              ]
+            },
+	    terms: {
+              identifier: 'terms',
+              rules: [
+                {
+                  type: 'checked',
+                  prompt: 'Please agree to the Terms and Condition.'
                 }
               ]
             },
@@ -122,6 +105,9 @@ angular.module('reg')
       $scope.submitForm = function(){
         if ($('.ui.form').form('is valid')){
           _updateUser();
+        }
+	 else {
+          swal("Uh oh!", "Please Fill The Required Fields", "error");
         }
       };
 

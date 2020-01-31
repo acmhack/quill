@@ -3,3 +3,23 @@
     text-transform:none;
     letter-spacing:0
 }
+label.required:after
+{
+	color: red;
+	content: " *";
+}
+p.required:after
+{
+	color: red;
+        content: " *";
+}
+a{
+	text-decoration: underline;
+}
+p.line:after{
+    content:" ";
+    width:200px;
+    display:block;
+    margin:1em auto 2em;
+    border-bottom:4px solid $tertiary
+}

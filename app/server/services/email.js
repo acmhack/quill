@@ -128,7 +128,7 @@ controller.sendVerificationEmail = function(email, token, callback) {
  * @param  {[type]}   email    [description]
  * @param  {[type]}   token    [description]
  * @param  {Function} callback [description]
- */
+ 
 controller.sendStatusEmail = function(email, token, callback) {
 
   var options = {
@@ -139,12 +139,12 @@ controller.sendStatusEmail = function(email, token, callback) {
   var locals = {
     title: 'Your application status has been changed',
     subtitle: '',
-    description: 'Your application has been reviewed and we have changed your status. Please go back to your dashboard to view your current status',
+    description: 'Thanks for applying to PickHacks! We have reviewed your application and changed your status on the dashboard.',
     actionUrl: ROOT_URL,
     actionName: "Home"
   };
 };
-
+*/
 /**
  * Send a status update email.
  * @param  {[type]}   email    [description]
@@ -161,7 +161,7 @@ controller.sendStatusEmail = function(email, token, callback) {
   var locals = {
     title: 'Status Update',
     subtitle: '',
-    description: 'We have review your application and changed your status on the dashboard. Please navigate to our dashboard to view your status',
+    description: 'Thanks for applying to PickHacks! We have reviewed your application and changed your status on the dashboard.',
     actionUrl: ROOT_URL,
     actionName: "View Status"
   };

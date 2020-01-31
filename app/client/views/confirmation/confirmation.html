@@ -13,67 +13,6 @@
         <fieldset ng-disabled="pastConfirmation">
 
           <div class="field">
-            <label> What's your phone number? (required) </label>
-            <p>
-              We need this in case we need to get ahold of you!
-            </p>
-            <input type="tel"
-                   name="phone"
-                   ng-model="user.confirmation.phone"
-                   placeholder="(123) - 555 - 1234"
-                   required>
-          </div>
-
-          <div class="field">
-            <label> Dietary Restrictions </label>
-
-            <p>
-              If your restriction is not included here, please let us know in the additional notes at the bottom.
-            </p>
-            <p>
-              We'll make sure you get fed :)
-            </p>
-
-          </div>
-
-          <div class="inline fields">
-            <div class="field"
-              ng-repeat="(key, value) in dietaryRestrictions">
-
-              <div class="ui checkbox">
-                <input type="checkbox" ng-model="dietaryRestrictions[key]" />
-                <label>{{key}}</label>
-              </div>
-
-            </div>
-          </div>
-
-          <div class="field">
-            <label> Shirt Size (required) </label>
-            <p>
-              Let's get you some swag!
-            </p>
-            <select
-              name="shirt"
-              ng-model="user.confirmation.shirtSize"
-              required>
-              <option value="">Shirt Size</option>
-              <option value="XS">Unisex X-Small</option>
-              <option value="S">Unisex Small</option>
-              <option value="M">Unisex Medium</option>
-              <option value="L">Unisex Large</option>
-              <option value="XL">Unisex X-Large</option>
-              <option value="XXL">Unisex XX-Large</option>
-              <option value="WXS">Women's X-Small</option>
-              <option value="WS">Women's Small</option>
-              <option value="WM">Women's Medium</option>
-              <option value="WL">Women's Large</option>
-              <option value="WXL">Women's X-Large</option>
-              <option value="WXXL">Women's XX-Large</option>
-            </select>
-          </div>
-
-          <div class="field">
             <label>
               Will you be needing hardware?
             </label>
@@ -102,22 +41,6 @@
           <div class="divided title"> Skills & Accomplishments </div>
 
           <div class="field">
-            <label> What are you studying? </label>
-            <input type="text"
-                   name="study"
-                   placeholder="Computer Science, Product Design, Basket Weaving, etc."
-                   ng-model="user.confirmation.major">
-          </div>
-
-          <div class="field">
-            <label> Github </label>
-            <input type="text"
-                   name="github"
-                   placeholder="https://github.com/foobar"
-                   ng-model="user.confirmation.github">
-          </div>
-
-          <div class="field">
             <label> Twitter </label>
             <input type="text"
                    name="twitter"
@@ -131,7 +54,7 @@
           <div class="divided title">Legal</div>
 
 	  <div class="field">
-            <label> Liability Waiver & Photo Release</label>
+            <label class = 'required'> Liability Waiver & Photo Release</label>
 	    <p>
               <a target="_blank"
 		href="http://dashboard.pickhacks.io/assets/form.pdf">
@@ -144,10 +67,20 @@
             <p>
               My signature below indicates that I have had sufficient opportunity to read this entire document, that I have read it, and that I understand how it affects my legal rights. I agree to be bound by its terms.
             </p>
-            <input type="text"
+	    <input type="text"
                    name="signaturePhotoRelease"
                    placeholder="Your Full Legal Name"
                    ng-model="user.confirmation.signaturePhotoRelease">
+	    <input type="text"
+                   name="signatureDate"
+                   placeholder="Today Date MM/DD/YYYY"
+                   ng-model="user.confirmation.dateSig">
+	    <div class="ui checkbox">
+		    <br>
+		    <br>
+            <input type="checkbox" id="terms" ng-model="user.confirmation.terms">
+            <label for="terms">I accept the Terms and Condition.</label>
+          </div>
 	    <h5 style = "color: white;">
               If participant is less than 18 years of age:
 	    </h5>
@@ -157,9 +90,17 @@
 
             </p>
             <input type="text"
-                   name="signaturePhotoRelease"
+                   name="signatureParentPhotoRelease"
                    placeholder="Your Parent/Guardian Full Legal Name"
-                   ng-model="user.confirmation.signaturePhotoRelease">
+                   ng-model="user.confirmation.signatureParentPhotoRelease">
+	    <input type="text"
+                   name="parentPhone"
+                   placeholder="Parents Phone Number"
+                   ng-model="user.confirmation.phoneParent">
+	    <input type="text"
+                   name="signatureParentDate"
+                   placeholder="Today Date MM/DD/YYYY"
+                   ng-model="user.confirmation.dateParentSig">
           </div>
 
           <br>

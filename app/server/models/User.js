@@ -40,7 +40,7 @@ var profile = {
   graduationYear: {
     type: String,
     enum: {
-      values: '2020 2021 2022 2023'.split(' '),
+      values: '2020 2021 2022 2023 Highschool Graduate'.split(' '),
     }
   },
 
@@ -146,7 +146,6 @@ var profile = {
     min: 0,
     max: 500
   },
-
   codeAgreement: {
     type: Boolean,
     required: true,
@@ -183,7 +182,12 @@ var confirmation = {
 
   signatureLiability: String,
   signaturePhotoRelease: String,
+  signatureParentPhotoRelease: String,
   signatureCodeOfConduct: String,
+  parentPhone: String,
+  dateSig: String,
+  dateParentSig: String,
+  terms: Boolean,
 };
 
 var status = {
@@ -215,6 +219,11 @@ var status = {
     default: false,
   },
   declined: {
+    type: Boolean,
+    required: true,
+    default: false,
+  },
+  rejected: {
     type: Boolean,
     required: true,
     default: false,
@@ -418,11 +427,18 @@ schema.statics.getByToken = function(token, callback){
 schema.statics.validateProfile = function(profile, cb){
   return cb(!(
     profile.name.length > 0 &&
-    profile.adult &&
     profile.school.length > 0 &&
-    ['2020', '2021', '2022', '2023'].indexOf(profile.graduationYear) > -1 &&
-    ['M', 'F', 'O', 'Z'].indexOf(profile.gender) > -1
-    ));
+    ['2020', '2021', '2022', '2023', 'Highschool', 'Graduate'].indexOf(profile.graduationYear) > -1 &&
+    ['M', 'F', 'O', 'Z'].indexOf(profile.gender) > -1 &&
+    profile.phone.length > 0 &&
+    profile.major.length > 0 &&
+    profile.gender.length > 0 &&
+    profile.race.length > 0 &&
+    profile.participationCount.length > 0 &&
+    profile.codeAgreement == true &&
+    profile.dataAgreement == true &&
+    profile.diet.length > 0
+  ));
 };
 
 //=========================================

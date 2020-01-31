@@ -338,7 +338,7 @@ angular.module('reg')
             fields: [
               {
                 name: 'Name',
-                value: user.profile.firstName + ' ' + user.profile.lastName
+                value: user.profile.name
               },{
                 name: 'Gender',
                 value: user.profile.gender
@@ -349,10 +349,13 @@ angular.module('reg')
                 name: 'Graduation Year',
                 value: user.profile.graduationYear
               },{
+		name: 'Adult (18+)',
+                value: user.profile.adult
+              },{
                 name: 'Description',
                 value: user.profile.description
               },{
-                name: 'Preferred SuperBowl Halftime Show',
+                name: 'Fictional Character',
                 value: user.profile.superbowl
               },{
                 name: 'Favorite Game',
@@ -362,79 +365,15 @@ angular.module('reg')
           },{
             name: 'Confirmation',
             fields: [
-              {
-                name: 'Phone Number',
-                value: user.profile.phone
+	       {
+                name: 'Liability Signature',
+                value: user.confirmation.signaturePhotoRelease
               },{
-                name: 'Dietary Restrictions',
-                value: user.profile.diet
+                name: 'Parent Liability Signature',
+                value: user.signatureParentPhotoRelease
               },{
-                name: 'Shirt Size',
-                value: user.profile.ssSize
-              },{
-                name: 'Major',
-                value: user.profile.major
-              },{
-                name: 'Github',
-                value: user.profile.github
-              },{
-                name: 'LinkedIn',
-                value: user.profile.linkedIn
-              },{
-                name: 'Website',
-                value: user.profile.otherSites
-              }
-            ]
-          },{
-            name: 'Hosting',
-            fields: [
-              {
-                name: 'Needs Hosting Friday',
-                value: user.confirmation.hostNeededFri,
-                type: 'boolean'
-              },{
-                name: 'Needs Hosting Saturday',
-                value: user.confirmation.hostNeededSat,
-                type: 'boolean'
-              },{
-                name: 'Gender Neutral',
-                value: user.confirmation.genderNeutral,
-                type: 'boolean'
-              },{
-                name: 'Cat Friendly',
-                value: user.confirmation.catFriendly,
-                type: 'boolean'
-              },{
-                name: 'Smoking Friendly',
-                value: user.confirmation.smokingFriendly,
-                type: 'boolean'
-              },{
-                name: 'Hosting Notes',
-                value: user.confirmation.hostNotes
-              }
-            ]
-          },{
-            name: 'Travel',
-            fields: [
-              {
-                name: 'Needs Reimbursement',
-                value: user.confirmation.needsReimbursement,
-                type: 'boolean'
-              },{
-                name: 'Received Reimbursement',
-                value: user.confirmation.needsReimbursement && user.status.reimbursementGiven
-              },{
-                name: 'Address',
-                value: user.confirmation.address ? [
-                  user.confirmation.address.line1,
-                  user.confirmation.address.line2,
-                  user.confirmation.address.city,
-                  ',',
-                  user.confirmation.address.state,
-                  user.confirmation.address.zip,
-                  ',',
-                  user.confirmation.address.country,
-                ].join(' ') : ''
+                name: 'Adult (18+)',
+                value: user.profile.adult
               },{
                 name: 'Additional Notes',
                 value: user.confirmation.notes

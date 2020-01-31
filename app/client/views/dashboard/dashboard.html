@@ -11,17 +11,10 @@
         </div>
         <br>
 
-	<div
-          class="state"
-          ng-class="user.status.name"
-          ng-if="dashState('rejected')">
-          Rejected
-        </div>
-
         <div
           class="state"
           ng-class="user.status.name"
-          ng-if="!showWaitlist && !dashState('admittedAndCannotConfirm') && !dashState('rejected')">
+	  ng-if="!showWaitlist && !dashState('admittedAndCannotConfirm')">
           {{user.status.name}}
         </div>
 
@@ -31,11 +24,11 @@
           Expired Admission
         </div>
 
-
+	<!--THIS IS REJECTED, NOT WAITLISTED-->
         <div
-          ng-if="showWaitlist"
+          ng-if="dashState('rejected')"
           class="waitlist state">
-          On waitlist
+          Rejected
         </div>
 
         <div class="ui divider"></div>
@@ -256,6 +249,15 @@
           </p>
         </div>
 
+	<div
+          class="description"
+          ng-if="dashState('checkedIn')">
+
+          <p>
+            {{ DASHBOARD.CHECKEDIN }}
+          </p>
+        </div>
+	
 	<div
           class="description"
           ng-if="dashState('rejected')">

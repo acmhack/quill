@@ -10,11 +10,11 @@ $register-color: $tertiary;
 
 $status-unverified-color: rgb(82, 82, 82);
 $status-incomplete-color: #F5F5F5;
-$status-submitted-color: lighten($secondary, 20%);
-$status-admitted-color: $primary;
-$status-confirmed-color: $secondary;
-$status-checkedin-color: $secondary;
-$status-waitlist-color: $tertiary;
+$status-submitted-color: purple;
+$status-admitted-color: #1aae5c;
+$status-confirmed-color: white;
+$status-checkedin-color: white;
+$status-waitlist-color: #d02128; //THIS IS THE REJECTED COLOR
 $status-declined-color: $tertiary;
 $status-rejected-color: red; // Not used
 
@@ -83,6 +83,10 @@ body {
   border-radius: 0;
   box-shadow: none;
 }
+
+.ui.header {
+	color:white;
+}
 input {
   border-radius: 0 !important;
 }
@@ -124,3 +128,4 @@ fieldset {
   width: 100%;
 }
 // @import 'animation';
+
