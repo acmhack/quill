@@ -31,7 +31,7 @@ app
 
       // Startup, login if there's  a token.
       var token = Session.getToken();
-      if (token){
+	    if (token){
         AuthService.loginWithToken(token);
       }
 

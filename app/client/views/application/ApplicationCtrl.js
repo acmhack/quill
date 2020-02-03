@@ -13,10 +13,8 @@ angular.module('reg')
     'Session',
     'UserService',
     function($scope, $rootScope, $state, $http, currentUser, settings, Session, UserService) {
-
       // Set up the user
       $scope.user = currentUser.data;
-      // console.log(currentUser.data);
 
       // Is the student from S&T?
       $scope.isUmStudent = $scope.user.email.split('@')[1] == 'mst.edu';
@@ -74,7 +72,6 @@ angular.module('reg')
       }
 
       function _updateUser(e){
-        console.log($scope.user);
         UserService
           .updateProfile(Session.getUserId(), $scope.user.profile)
           .then(response => {
@@ -82,8 +79,8 @@ angular.module('reg')
               $state.go("app.dashboard");
             });
           }, response => {
-            swal("Uh oh!", "Something went wrong.", "error");
-          });
+          	swal("Uh oh!", "Please fill out all the required fields.", "error");
+	  });
       }
 
       function isMinor() {
@@ -225,7 +222,43 @@ angular.module('reg')
                   prompt: 'Please select a race.'
                 }
               ]
+            },/*
+		  discoveryMethod: {
+              identifier: 'discoverMethod',
+              rules: [
+                {
+                  type: 'emptyRace',
+                  prompt: 'Please select a discovery method.'
+                }
+              ]
             },
+		  fiction: {
+              identifier: 'fiction',
+              rules: [
+                {
+                  type: 'empty',
+                  prompt: 'Please fill out the field above.'
+                }
+              ]
+            },
+	travel: {
+              identifier: 'travel',
+              rules: [
+                {
+                  type: 'travel',
+                  prompt: 'Please select your travel method.'
+                }
+              ]
+            },
+	   game: {
+              identifier: 'game',
+              rules: [
+                {
+                  type: 'empty',
+                  prompt: 'Please fill in the required field'
+                }
+              ]
+            },*/
             participationCount: {
               identifier: 'participationCount',
               rules: [

@@ -117,6 +117,7 @@
           <p>
             Upload a resume. PDF only!
           </p>
+	  <p style="font-weight: normal; font-size: 75%"><i>Note: Resume are optional, but highly encouraged for your application.</i></p>
           <input 
             type="file"
             name="resume"
@@ -165,7 +166,7 @@
         </div>
 
         <div class="field">
-          <label>How do you plan on getting to PickHacks?</label>
+          <label class="required">How do you plan on getting to PickHacks?</label>
           <select
             name="travel"
             ng-model="user.profile.travel">
@@ -179,22 +180,23 @@
 	<br>
 	<p class="line"></p>
 	<label><b>This year’s PickHacks is all about entertainment, so please entertain us by answering these questions:</b></label>
-	<p style="font-weight: normal; font-size: 75%"><i>Note: these questions are optional, but highly encouraged for your application.</i></p>
 	<div class="field">
-          <label>If you could be a fictional character for a day, who would you be and what would you do?</label>
+          <label class="required">If you could be a fictional character for a day, who would you be and what would you do?</label>
                  <textarea
+		 name="fiction"
 	  	ng-model="user.profile.superbowl"></textarea>
         </div>
 
         <div class="field">
-          <label>Got any games? Tell us about your favorite video/board/party game and why you love it.</label>
+          <label class="required">Got any games? Tell us about your favorite video/board/party game and why you love it.</label>
 	  <textarea
+		 name="game"
 	     ng-model="user.profile.game"></textarea>
         </div>
 	<br>
 	<p class="line"></p>
         <div class="field">
-          <label>How did you hear about PickHacks?</label>
+          <label class="required">How did you hear about PickHacks?</label>
           <select
             name="discoveryMethod"
             ng-model="user.profile.discoveryMethod">

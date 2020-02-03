@@ -4,7 +4,8 @@
   }
 
   .page.button {
-    margin-bottom: 6px;
+   	  background : white !important;
+	  margin-bottom: 6px;
   }
 
   #table-container {
@@ -15,10 +16,12 @@
 	  color: black !important;
   }
   table.users {
+th{
+	color:blue;
+}
 
     tr {
       cursor: pointer;
-
       &.admin {
         background: lighten($brand-secondary, 50%) !important;
         &:hover {

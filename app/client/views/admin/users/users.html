@@ -1,6 +1,55 @@
 <style>
 p    {color: black;}
 </style>
+
+	<script>
+		function sortTable() {
+                	var table, rows, switching, i, x, y, shouldSwitch;
+                	table = document.getElementById("myTable");
+                	switching = true;
+                	while (switching) {
+                	        switching = false;
+                        	rows = table.rows;
+                        	for (i = 1; i < (rows.length - 1); i++) {
+                                	shouldSwitch = false;
+                                	x = rows[i].getElementsByTagName("TD")[4];
+                                	y = rows[i + 1].getElementsByTagName("TD")[4];
+                        		if (Number(x.innerHTML) < Number(y.innerHTML)) {
+       						shouldSwitch = true;
+       				 		break;
+      					}	
+				}
+                        	if (shouldSwitch) {
+                                	rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
+                                	switching = true;
+                        	}
+                	}
+        	}
+
+		function sortTableHeader(n) {
+                	var table, rows, switching, i, x, y, shouldSwitch;
+                	table = document.getElementById("myTable");
+                	switching = true;
+                	while (switching) {
+                	        switching = false;
+                        	rows = table.rows;
+                        	for (i = 1; i < (rows.length - 1); i++) {
+                                	shouldSwitch = false;
+                                	x = rows[i].getElementsByTagName("TD")[n];
+                                	y = rows[i + 1].getElementsByTagName("TD")[n];
+                                	if (x.innerHTML.toLowerCase() > y.innerHTML.toLowerCase()) {
+                                        	shouldSwitch = true;
+                                        	break;
+                                	}
+                        	}
+                        	if (shouldSwitch) {
+                                	rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
+                                	switching = true;
+                        	}
+                	}
+        	}
+		</script>
+
 <div class="ui segment">
 
   <div class="ui stackable grid">
@@ -89,20 +138,22 @@ p    {color: black;}
           </div>
         </div>
       </div>
-
       <table
+	id="myTable"
         class="ui celled selectable compact users table">
         <thead>
           <tr>
-            <th>Name</th>
-            <th>E-mail address</th>
-            <th>School</th>
-            <th>Grad</th>
-            <th>V/S/A/C</th>
-            <th>Host</th>
-            <th>$</th>
+            <th onclick="sortTableHeader(0)">Name</th>
+            <th onclick="sortTableHeader(1)">E-mail address</th>
+            <th onclick="sortTableHeader(2)">School</th>
+            <th onclick="sortTableHeader(3)">Grad</th>
+	    <th onclick="sortTable()">Time</th>
+	    <th>V/S/A/C</th>
             <th></th>
             <th></th>
+	    <!---
+	    <th>Admitted</th>
+	    <th>Rejected</th>-->
           </tr>
         </thead>
         <tbody>
@@ -123,6 +174,7 @@ p    {color: black;}
               class="collapsing">
               {{user.profile.graduationYear}}
             </td>
+	    <td>{{user.timestamp}}</td>
             <td
               class="collapsing">
 
@@ -230,6 +282,9 @@ p    {color: black;}
               </button>
 
             </td>
+	    <!---
+	    <td>{{user.status.admitted}}</td>
+	    <td>{{user.status.rejected}}</td> -->
           </tr>
         </tbody>
       </table>

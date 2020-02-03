@@ -2,6 +2,7 @@ angular.module('reg')
   .service('Session', [
     '$rootScope',
     '$window',
+    
     function($rootScope, $window){
 
     this.create = function(token, user){

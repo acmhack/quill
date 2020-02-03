@@ -22,7 +22,6 @@ angular.module('reg')
       $scope.selectedUser.sections = generateSections({status: '', confirmation: {
         dietaryRestrictions: []
       }, profile: ''});
-
       function updatePage(data){
         $scope.users = data.users;
         $scope.currentPage = data.page;
@@ -52,7 +51,7 @@ angular.module('reg')
       $scope.goToPage = function(page){
         $state.go('app.admin.users', {
           page: page,
-          size: $stateParams.size || 50
+          size: $stateParams.size || 10
         });
       };
 

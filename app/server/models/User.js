@@ -437,7 +437,12 @@ schema.statics.validateProfile = function(profile, cb){
     profile.participationCount.length > 0 &&
     profile.codeAgreement == true &&
     profile.dataAgreement == true &&
-    profile.diet.length > 0
+    profile.game.length > 0 &&
+    profile.discoveryMethod.length > 0 &&
+    profile.superbowl.length > 0 &&
+    profile.travel.length > 0 &&
+    profile.diet.length > 0 
+
   ));
 };
 

@@ -12,9 +12,9 @@ angular.module('reg')
     'Session',
     'EVENT_INFO',
     function($rootScope, $scope, settings, Utils, AuthService, Session, EVENT_INFO){
-
       var settings = settings.data;
-      var user = $rootScope.currentUser;
+      //var user = $rootScope.currentUser;
+      var user = Session.getUser(); 
 
       $scope.EVENT_INFO = EVENT_INFO;
 

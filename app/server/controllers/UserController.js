@@ -225,7 +225,7 @@ UserController.getPage = function(query, callback){
   User
     .find(findQuery)
     .sort({
-      'profile.name': 'asc'
+      'timestamp': 'desc'
     })
     .select('+status.admittedBy')
     .skip(page * size)
