@@ -212,6 +212,78 @@
     </div>
     <div class="ui divider"></div>
       <div class="ui list">
+        <div class="item">
+          <strong>0 Hackathon:</strong> {{stats.demo.hack['N']}} ({{stats.demo.hack['N'] / stats.total * 100 | number: 1}}%)
+        </div>
+        <div class="item">
+          <strong>1-3 Hackathon:</strong> {{stats.demo.hack['S']}} ({{stats.demo.hack['S'] / stats.total * 100 | number: 1}}%)
+        </div>
+        <div class="item">
+          <strong>3-7 Hackathon:</strong> {{stats.demo.hack['M']}} ({{stats.demo.hack['M'] / stats.total * 100 | number: 1}}%)
+        </div>
+        <div class="item">
+         <strong>7+ Hackathon:</strong> {{stats.demo.hack['L']}} ({{stats.demo.hack['L'] / stats.total * 100 | number: 1}}%)
+        </div>
+      </div>
+    <div class="ui divider"></div>
+      <div class="ui list">
+        <div class="item">
+          <strong>None:</strong> {{stats.demo.diet['N']}} ({{stats.demo.diet['N'] / stats.total * 100 | number: 1}}%)
+        </div>
+	<div class="item">
+          <strong>Vegetarian:</strong> {{stats.demo.diet['T']}} ({{stats.demo.diet['T'] / stats.total * 100 | number: 1}}%)
+        </div>
+	<div class="item">
+          <strong>Vegan:</strong> {{stats.demo.diet['V']}} ({{stats.demo.diet['V'] / stats.total * 100 | number: 1}}%)
+        </div>
+	<div class="item">
+          <strong>Gluten Free:</strong> {{stats.demo.diet['G']}} ({{stats.demo.diet['G'] / stats.total * 100 | number: 1}}%)
+        </div>
+	<div class="item">
+          <strong>Dairy Free:</strong> {{stats.demo.diet['D']}} ({{stats.demo.diet['D'] / stats.total * 100 | number: 1}}%)
+        </div>
+	<div class="item">
+          <strong>Nut Allergy:</strong> {{stats.demo.diet['A']}} ({{stats.demo.diet['A'] / stats.total * 100 | number: 1}}%)
+        </div>
+	<div class="item">
+          <strong>Kosher:</strong> {{stats.demo.diet['K']}} ({{stats.demo.diet['K'] / stats.total * 100 | number: 1}}%)
+        </div>
+	<div class="item">
+          <strong>Halal:</strong> {{stats.demo.diet['H']}} ({{stats.demo.diet['H'] / stats.total * 100 | number: 1}}%)
+        </div>
+	<div class="item">
+          <strong>Other:</strong> {{stats.demo.diet['O']}} ({{stats.demo.diet['O'] / stats.total * 100 | number: 1}}%)
+        </div>
+      </div>
+    <div class="ui divider"></div>
+      <div class="ui list">
+        <div class="item">
+          <strong>Word of Mouth:</strong> {{stats.demo.discoveryMethod['W']}} ({{stats.demo.discoveryMethod['W'] / stats.total * 100 | number: 1}}%)
+        </div>
+        <div class="item">
+          <strong>Social Media:</strong> {{stats.demo.discoveryMethod['M']}} ({{stats.demo.discoveryMethod['M'] / stats.total * 100 | number: 1}}%)
+        </div>
+	<div class="item">
+          <strong>MLH Website:</strong> {{stats.demo.discoveryMethod['H']}} ({{stats.demo.discoveryMethod['H'] / stats.total * 100 | number: 1}}%)
+        </div>
+	<div class="item">
+          <strong>E-mail:</strong> {{stats.demo.discoveryMethod['E']}} ({{stats.demo.discoveryMethod['E'] / stats.total * 100 | number: 1}}%)
+        </div>
+	<div class="item">
+          <strong>School Organization:</strong> {{stats.demo.discoveryMethod['S']}} ({{stats.demo.discoveryMethod['S'] / stats.total * 100 | number: 1}}%)
+        </div>
+	<div class="item">
+          <strong>Professor/Class:</strong> {{stats.demo.discoveryMethod['P']}} ({{stats.demo.discoveryMethod['P'] / stats.total * 100 | number: 1}}%)
+        </div>
+	<div class="item">
+          <strong>Internet:</strong> {{stats.demo.discoveryMethod['I']}} ({{stats.demo.discoveryMethod['I'] / stats.total * 100 | number: 1}}%)
+        </div>
+	<div class="item">
+          <strong>Other:</strong> {{stats.demo.discoveryMethod['O']}} ({{stats.demo.discoveryMethod['O'] / stats.total * 100 | number: 1}}%)
+        </div>
+      </div>
+    <div class="ui divider"></div>
+      <div class="ui list">
 	<div class="item">
           <strong>Highschool:</strong> {{stats.demo.year['Highschool']}} ({{stats.demo.year['Highschool'] / stats.total * 100 | number: 1}}%)
         </div>

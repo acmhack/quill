@@ -51,7 +51,7 @@ angular.module('reg')
       $scope.goToPage = function(page){
         $state.go('app.admin.users', {
           page: page,
-          size: $stateParams.size || 10
+          size: $stateParams.size || 50
         });
       };
 
@@ -339,8 +339,14 @@ angular.module('reg')
                 name: 'Name',
                 value: user.profile.name
               },{
+		name: 'Number',
+                value: user.profile.number
+              },{
                 name: 'Gender',
                 value: user.profile.gender
+              },{
+		name: 'Race',
+                value: user.profile.race
               },{
                 name: 'School',
                 value: user.profile.school
@@ -353,6 +359,18 @@ angular.module('reg')
               },{
                 name: 'Description',
                 value: user.profile.description
+              },{
+		name: 'Discovery Method',
+                value: user.profile.discoveryMethod
+              },{
+		name: 'Diet',
+                value: user.profile.diet
+              },{
+		name: 'Participation Count',
+                value: user.profile.participationCount
+              },{
+		 name: 'Travel',
+                value: user.profile.travel
               },{
                 name: 'Fictional Character',
                 value: user.profile.superbowl

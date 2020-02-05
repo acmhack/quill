@@ -25,7 +25,35 @@ function calculateStats(){
         '2022': 0,
         '2023': 0,
 	'Highschool': 0,
-      }
+      },
+      hack: {
+	N: 0,
+	S: 0,
+	M: 0,
+	L: 0,
+      },
+      diet:{
+	N: 0,
+	T: 0,
+        V: 0,
+        G: 0,
+        D: 0,
+        A: 0,
+        K: 0,
+        H: 0,
+	O: 0,
+      },
+      discoveryMethod:{
+        W: 0,
+        M: 0,
+        H: 0,
+        E: 0,
+        S: 0,
+        P: 0,
+        I: 0,
+        O: 0,
+        
+      },
     },
 
     teams: {},
@@ -93,7 +121,10 @@ function calculateStats(){
         // Add to the gender
         newStats.demo.gender[user.profile.gender] += 1;
 
-        // Count verified
+        //Count how people heard of pickhacks
+	newStats.demo.discoveryMethod[user.profile.discoveryMethod] += 1;
+
+	// Count verified
         newStats.verified += user.verified ? 1 : 0;
 
         // Count submitted
@@ -113,7 +144,7 @@ function calculateStats(){
         newStats.confirmedOther += user.status.confirmed && user.profile.gender == "O" ? 1 : 0;
         newStats.confirmedNone += user.status.confirmed && user.profile.gender == "N" ? 1 : 0;
 
-        // Count declined
+	// Count declined
         newStats.declined += user.status.declined ? 1 : 0;
 
         // Count the number of people who need reimbursements
@@ -140,7 +171,24 @@ function calculateStats(){
         newStats.demo.schools[email].confirmed += user.status.confirmed ? 1 : 0;
         newStats.demo.schools[email].declined += user.status.declined ? 1 : 0;
 
-        // Count graduation years
+	// Count the number of people that are checkedIn of how many Hackathon they attended
+	newStats.demo.hack['N'] += user.status.checkedIn && user.profile.participationCount == "N" ? 1 : 0;
+	newStats.demo.hack['S'] += user.status.checkedIn && user.profile.participationCount == "S" ? 1 : 0;
+	newStats.demo.hack['M'] += user.status.checkedIn && user.profile.participationCount == "M" ? 1 : 0;
+	newStats.demo.hack['L'] += user.status.checkedIn && user.profile.participationCount == "L" ? 1 : 0;
+
+	//Count the numbeer of people that are Accepted Dietary Restriction
+	newStats.demo.diet['N'] += user.status.admitted && user.profile.diet == "N" ? 1 : 0;
+        newStats.demo.diet['T'] += user.status.admitted && user.profile.diet == "T" ? 1 : 0;
+        newStats.demo.diet['V'] += user.status.admitted && user.profile.diet == "V" ? 1 : 0;
+        newStats.demo.diet['G'] += user.status.admitted && user.profile.diet == "G" ? 1 : 0;
+        newStats.demo.diet['D'] += user.status.admitted && user.profile.diet == "D" ? 1 : 0;
+        newStats.demo.diet['A'] += user.status.admitted && user.profile.diet == "A" ? 1 : 0;
+        newStats.demo.diet['K'] += user.status.admitted && user.profile.diet == "K" ? 1 : 0;
+        newStats.demo.diet['H'] += user.status.admitted && user.profile.diet == "H" ? 1 : 0;
+        newStats.demo.diet['O'] += user.status.admitted && user.profile.diet == "O" ? 1 : 0;
+	      
+	// Count graduation years
         if (user.profile.graduationYear){
           newStats.demo.year[user.profile.graduationYear] += 1;
         }

@@ -89,6 +89,15 @@ angular.module('reg')
                 }
               ]
             },
+	travel: {
+              identifier: 'travel',
+              rules: [
+                {
+                  type: 'travel',
+                  prompt: 'Please select your travel method.'
+                }
+              ]
+            },
 	    terms: {
               identifier: 'terms',
               rules: [

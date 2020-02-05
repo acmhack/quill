@@ -440,7 +440,6 @@ schema.statics.validateProfile = function(profile, cb){
     profile.game.length > 0 &&
     profile.discoveryMethod.length > 0 &&
     profile.superbowl.length > 0 &&
-    profile.travel.length > 0 &&
     profile.diet.length > 0 
 
   ));
