@@ -66,7 +66,16 @@ angular.module('reg')
           });
       }
 
-      function _setupForm(){
+	 function travelValidation() {
+        return true;
+      }
+
+      
+	function _setupForm(){
+         $.fn.form.settings.rules.emptyTravel = function (value) {
+          return travelValidation();
+	};
+
         // Semantic-UI form validation
         $('.ui.form').form({
           inline: true,
@@ -93,7 +102,7 @@ angular.module('reg')
               identifier: 'travel',
               rules: [
                 {
-                  type: 'travel',
+                  type: 'emptyTravel',
                   prompt: 'Please select your travel method.'
                 }
               ]
