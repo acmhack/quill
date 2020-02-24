@@ -111,6 +111,42 @@ angular.module('reg')
         });
       }
 
+       $scope.travel = function(){
+	       var e = document.getElementById("travel");
+	       var strUser = e.options[e.selectedIndex].value;
+	       if(strUser != 'B'){
+	       		document.getElementById("bus").style.display = "none";
+	       		document.getElementById("abc").style.display = "none";
+	       }
+	       else{
+		       document.getElementById("bus").style.display = "block";
+		       document.getElementById("abc").style.display = "block";
+	       }
+       };
+
+	$scope.hello =	function() {
+                var e = document.getElementById("busRoute");
+                var strUser = e.options[e.selectedIndex].value;
+		if(strUser == '1'){
+                        document.getElementById("abc").href="http://pickhacks2020-route1.eventbrite.com/"
+                }
+		else if(strUser == '2'){
+                        document.getElementById("abc").href="http://pickhacks2020-route2.eventbrite.com/"
+                }
+		else if(strUser == '3'){
+                        document.getElementById("abc").href="http://pickhacks2020-route3.eventbrite.com/"
+                }
+		else if(strUser == '4'){
+                        document.getElementById("abc").href="http://pickhacks2020-route4.eventbrite.com/"
+                }
+		else if(strUser == '5'){
+                        document.getElementById("abc").href="http://pickhacks2020-route5.eventbrite.com/"
+                }
+		else if(strUser == '6'){
+                        document.getElementById("abc").href="http://pickhacks2020-route6.eventbrite.com/"
+                }
+        }
+
       $scope.submitForm = function(){
         if ($('.ui.form').form('is valid')){
           _updateUser();

@@ -2,7 +2,6 @@
   <div class="divided title">
     Confirmation
   </div>
-
   <div class="ui stackable page grid">
     <div class="column">
 
@@ -14,9 +13,12 @@
 		
 	  <div class="field">
           <label class="required">How do you plan on getting to PickHacks?</label>
-          <select
-            name="travel"
-            ng-model="user.profile.travel">
+	  <select
+            id="travel"
+	    name="travel"
+     	    ng-init="travel()"
+            ng-change="travel()"
+	    ng-model="user.profile.travel">
             <option value="D">Driving</option>
             <option value="F">Flying</option>
             <option value="B">PickHacks Bus</option>
@@ -24,7 +26,24 @@
             <option value="W">Walking/Biking</option>
           </select>
         </div>
-        <br>
+	<br>
+	<div class="field" id = "bus">
+          <label class="required">If you are taking one of the buses headed to PickHacks, please choose your route FIRST and THEN use the link provided below to RSVP on the Eventbrite</label>
+          <select
+		 id="busRoute"
+   		 ng-change="hello()"
+		 ng-model="user.confirmation.route">
+            <option value="1">University of Missouri - St. Louis / Washington University in St. Louis</option>
+            <option value="2">St. Louis Community College - Florissant Valley / Parkway Central HS</option>
+            <option value="3">Purdue University</option>
+            <option value="4">Chicago area / University of Illinois at Urbana-Champaign</option>
+            <option value="5">Kansas State University / University of Kansas / University of Missouri - Kansas City</option>
+	    <option value="6">Iowa State University / University of Iowa / Truman State University / University of Missouri - Columbia</option>
+          </select>
+	  <br>
+	  <a href="http://pickhacks2020-route1.eventbrite.com/" target="_blank" id="abc">EVENTBRITE LINK</a>
+   	  <br>
+	</div>
 
           <div class="field">
             <label>
@@ -107,7 +126,19 @@
 
           <br>
           <br>
+	 
+	  <p> Please provide us your chaperone name and contact information, if the participant is less than 18 years of age </p>
+          <input type="text"
+                   name="chapName"
+                   placeholder="Your Chaperone Full Legal Name"
+                   ng-model="user.confirmation.chapName">
+            <input type="text"
+                   name="parentPhone"
+                   placeholder="Chaperone Phone Number"
+                   ng-model="user.confirmation.chapContact">
 
+	  <br>
+	  <br>
           <div class="divided title">everything else</div>
 
           <div class="field">
