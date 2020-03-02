@@ -221,12 +221,8 @@ UserController.getPage = function(query, callback){
 
     findQuery.$or = queries;
   }
-
-  User
+   User
     .find(findQuery)
-    .sort({
-      'timestamp': 'desc'
-    })
     .select('+status.admittedBy')
     .skip(page * size)
     .limit(size)
@@ -234,7 +230,6 @@ UserController.getPage = function(query, callback){
       if (err || !users){
         return callback(err);
       }
-
       User.count(findQuery).exec(function(err, count){
 
         if (err){
@@ -397,7 +392,7 @@ UserController.declineById = function (id, callback){
 UserController.verifyByToken = function(token, callback){
   User.verifyEmailVerificationToken(token, function(err, email){
     User.findOneAndUpdate({
-      email: email.toLowerCase()
+    	email: email !== undefined ? email.toLowerCase() : ""
     },{
       $set: {
         'verified': true
