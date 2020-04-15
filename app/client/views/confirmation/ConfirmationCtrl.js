@@ -80,7 +80,16 @@ angular.module('reg')
         $('.ui.form').form({
           inline: true,
 	  fields: {
-            signaturePhotoRelease: {
+        shirt: {
+              identifier: 'shirt',
+              rules: [
+                {
+                  type: 'empty',
+                  prompt: 'Please give us a shirt size!'
+                }
+              ]
+            },    
+	signaturePhotoRelease: {
               identifier: 'signaturePhotoRelease',
               rules: [
                 {
@@ -89,7 +98,7 @@ angular.module('reg')
                 }
               ]
             },
-	    signatureDate: {
+	signatureDate: {
               identifier: 'signatureDate',
               rules: [
                 {
@@ -138,22 +147,28 @@ angular.module('reg')
                 var strUser = e.options[e.selectedIndex].value;
 		if(strUser == '1'){
                         document.getElementById("abc").href="http://pickhacks2020-route1.eventbrite.com/"
-                }
+			document.getElementById("abc").innerHTML = "EVENTBRITE LINK - ROUTE 1";
+		}
 		else if(strUser == '2'){
                         document.getElementById("abc").href="http://pickhacks2020-route2.eventbrite.com/"
+			document.getElementById("abc").innerHTML="EVENTBRITE LINK - ROUTE 2"
                 }
 		else if(strUser == '3'){
                         document.getElementById("abc").href="http://pickhacks2020-route3.eventbrite.com/"
-                }
+                	document.getElementById("abc").innerHTML="EVENTBRITE LINK - ROUTE 3"
+		}
 		else if(strUser == '4'){
                         document.getElementById("abc").href="http://pickhacks2020-route4.eventbrite.com/"
-                }
+                	document.getElementById("abc").innerHTML="EVENTBRITE LINK - ROUTE 4"
+		}
 		else if(strUser == '5'){
                         document.getElementById("abc").href="http://pickhacks2020-route5.eventbrite.com/"
-                }
+                	document.getElementById("abc").innerHTML="EVENTBRITE LINK - ROUTE 5"
+		}
 		else if(strUser == '6'){
                         document.getElementById("abc").href="http://pickhacks2020-route6.eventbrite.com/"
-                }
+                	document.getElementById("abc").innerHTML="EVENTBRITE LINK - ROUTE 6"
+		}
         }
 
       $scope.submitForm = function(){

@@ -690,14 +690,15 @@ UserController.declineUser = function(id , uEmail,user, callback){
  * @param  {String}   user     User checking in this person.
  * @param  {Function} callback args(err, user)
  */
-UserController.checkInById = function(id, user, callback){
+UserController.checkInById = function(id, qrid, user, callback){
   User.findOneAndUpdate({
     _id: id,
     verified: true
   },{
     $set: {
       'status.checkedIn': true,
-      'status.checkInTime': Date.now()
+      'status.checkInTime': Date.now(),
+      'QRID': qrid
     }
   }, {
     new: true

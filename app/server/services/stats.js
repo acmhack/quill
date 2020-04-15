@@ -52,7 +52,13 @@ function calculateStats(){
         P: 0,
         I: 0,
         O: 0,
-        
+      },
+      travel:{
+        D: 0,
+        F: 0,
+        B: 0,
+        P: 0,
+        W: 0,
       },
     },
 
@@ -123,6 +129,9 @@ function calculateStats(){
 
         //Count how people heard of pickhacks
 	newStats.demo.discoveryMethod[user.profile.discoveryMethod] += 1;
+
+	//Count how people are traveling to pickhacs
+        newStats.demo.travel[user.profile.travel] += 1;
 
 	// Count verified
         newStats.verified += user.verified ? 1 : 0;

@@ -284,6 +284,24 @@
       </div>
     <div class="ui divider"></div>
       <div class="ui list">
+        <div class="item">
+          <strong>Driving:</strong> {{stats.demo.travel['D']}} ({{stats.demo.travel['D'] / stats.total * 100 | number: 1}}%)
+        </div>
+        <div class="item">
+          <strong>Flying:</strong> {{stats.demo.travel['F']}} ({{stats.demo.travel['F'] / stats.total * 100 | number: 1}}%)
+        </div>
+        <div class="item">
+          <strong>PickHacks Bus:</strong> {{stats.demo.travel['B']}} ({{stats.demo.travel['B'] / stats.total * 100 | number: 1}}%)
+        </div>
+        <div class="item">
+          <strong>Public Transportation:</strong> {{stats.demo.travel['P']}} ({{stats.demo.travel['P'] / stats.total * 100 | number: 1}}%)
+        </div>
+        <div class="item">
+          <strong>Walking/Biking:</strong> {{stats.demo.travel['W']}} ({{stats.demo.travel['W'] / stats.total * 100 | number: 1}}%)
+        </div>
+      </div>  
+    <div class="ui divider"></div>
+      <div class="ui list">
 	<div class="item">
           <strong>Highschool:</strong> {{stats.demo.year['Highschool']}} ({{stats.demo.year['Highschool'] / stats.total * 100 | number: 1}}%)
         </div>

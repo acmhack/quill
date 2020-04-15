@@ -148,6 +148,8 @@ p    {color: black;}
             <th onclick="sortTableHeader(2)">School</th>
             <th onclick="sortTableHeader(3)">Grad</th>
 	    <th onclick="sortTable()">Time</th>
+	    <th>Accepted</th>
+	    <th>Rejected</th>
 	    <th>V/S/A/C</th>
             <th></th>
             <th></th>
@@ -175,7 +177,9 @@ p    {color: black;}
               {{user.profile.graduationYear}}
             </td>
 	    <td>{{user.timestamp}}</td>
-            <td
+            <td>{{user.status.admitted}}</td>
+	    <td>{{user.status.rejected}}</td>
+	    <td
               class="collapsing">
 
               <!-- Verified -->

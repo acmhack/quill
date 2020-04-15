@@ -10,7 +10,22 @@
         <div class="divided title">Basic Details</div>
 
         <fieldset ng-disabled="pastConfirmation">
-		
+
+
+	  <div class="field">
+            <label class="required"> Jacket Size (required) </label>
+            <select
+              name="shirt"
+              ng-model="user.confirmation.shirtSize"
+              required>
+              <option value="">Shirt Size</option>
+              <option value="S">Small</option>
+              <option value="M">Medium</option>
+              <option value="L">Large</option>
+              <option value="XL">X-Large</option>
+	    </select>
+          </div>
+	  <br>
 	  <div class="field">
           <label class="required">How do you plan on getting to PickHacks?</label>
 	  <select
@@ -47,8 +62,8 @@
 
           <div class="field">
             <label>
-              Will you be needing hardware?
-            </label>
+              Is there any hardware you would like to see at PickHacks?
+	    </label>
             <div class="ui checkbox">
               <input type="checkbox" ng-model="user.confirmation.wantsHardware">
               <label> Yes, I would like to use hardware in my hack. </label>

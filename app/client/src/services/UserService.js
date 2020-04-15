@@ -94,8 +94,8 @@ angular.module('reg')
         return $http.post(base + id + '/' + email + '/decline');
       },
 
-      checkIn: function(id){
-        return $http.post(base + id + '/checkin');
+      checkIn: function(id,qrid){
+        return $http.post(base + id + '/' + qrid + '/checkin');
       },
 
       checkOut: function(id){

@@ -90,12 +90,13 @@ angular.module('reg')
             if (!value) {
               return;
             }
-
+	    var doc = prompt("Enter the QR ID Number for the attendees",
+                "ID");
             UserService
-              .checkIn(user._id)
+              .checkIn(user._id,doc)
               .then(response => {
                 $scope.users[index] = response.data;
-                swal("Accepted", response.data.profile.name + " has been checked in.", "success");
+                swal("Accept", response.data.profile.name + " has been checked in.", "success");
               });
           });
         } else {
@@ -392,6 +393,15 @@ angular.module('reg')
                 name: 'Adult (18+)',
                 value: user.profile.adult
               },{
+		name: 'Method of Travel',
+                value: user.profile.travel
+              },{
+		name: 'Need Hardware',
+                value: user.profile.wantsHardware
+              },{
+		name: 'Hardware Notes',
+                value: user.profile.hardware
+              },{      
                 name: 'Additional Notes',
                 value: user.confirmation.notes
               }

@@ -188,6 +188,7 @@ var confirmation = {
   dateSig: String,
   dateParentSig: String,
   terms: Boolean,
+  route: String,
 };
 
 var status = {
@@ -242,6 +243,16 @@ var status = {
   reimbursementGiven: {
     type: Boolean,
     default: false
+  },
+  chapName: {
+    type: String,
+    min: 0,
+    max: 500,
+  },
+  chapContact: {
+    type: String,
+     min: 0,
+    max: 15,
   }
 };
 
@@ -298,6 +309,11 @@ var schema = new mongoose.Schema({
     required: true,
     default: Date.now(),
     select: false
+  },
+   QRID: {
+    type: String,
+    min: 0,
+    max: 140,
   },
 
   /**

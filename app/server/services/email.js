@@ -155,7 +155,7 @@ controller.sendStatusEmail = function(email, token, callback) {
 
   var options = {
     to: email,
-    subject: "["+HACKATHON_NAME+"] - Application Status Updated!"
+    subject: "["+HACKATHON_NAME+"] - [ACTION REQUIRED] Application Status Updated!"
   };
   
   var locals = {

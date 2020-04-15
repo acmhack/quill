@@ -279,10 +279,11 @@ module.exports = function(router) {
   /**
    * Check in a user. ADMIN ONLY, DUH
    */
-  router.post('/users/:id/checkin', isAdmin, function(req, res){
+  router.post('/users/:id/:qrid/checkin', isAdmin, function(req, res){
     var id = req.params.id;
+    var qrid = req.params.qrid;
     var user = req.user;
-    UserController.checkInById(id, user, defaultResponse(req, res));
+    UserController.checkInById(id, qrid, user, defaultResponse(req, res));
   });
 
   /**
