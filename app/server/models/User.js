@@ -457,7 +457,7 @@ schema.statics.validateProfile = function(profile, cb){
   return cb(!(
     profile.name.length > 0 &&
     profile.school.length > 0 &&
-    ['2020', '2021', '2022', '2023', 'Highschool', 'Graduate'].indexOf(profile.graduationYear) > -1 &&
+    ['2021','2022','2023','2024','2025','2026', 'Highschool', 'Graduate'].indexOf(profile.graduationYear) > -1 &&
     ['M', 'F', 'O', 'Z'].indexOf(profile.gender) > -1 &&
     profile.phone.length > 0 &&
     profile.major.length > 0 &&
@@ -468,9 +468,13 @@ schema.statics.validateProfile = function(profile, cb){
     profile.dataAgreement == true &&
     profile.game.length > 0 &&
     profile.discoveryMethod.length > 0 &&
+<<<<<<< HEAD
     profile.superbowl.length > 0  /*  &&
     profile.diet.length > 0 
 */
+=======
+    profile.superbowl.length > 0
+>>>>>>> 9f8b3d735f3e0705ed898f4065bc4f558e202e6b
 
   ));
 };
