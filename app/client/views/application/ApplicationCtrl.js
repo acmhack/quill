@@ -125,6 +125,13 @@ angular.module('reg')
       function codeValidation() {
         return true;
       }
+      function mlhValidation() {
+        return true;
+      }
+      function prehacksValidation() {
+        return true;
+      }
+
       function _setupForm(){
         // Custom minors validation rule
         $.fn.form.settings.rules.allowMinors = function (value) {
@@ -133,7 +140,7 @@ angular.module('reg')
 	$.fn.form.settings.rules.emptyName = function (value) {
           return nameValidation();
 
-        },      
+        },
         $.fn.form.settings.rules.emptyPhone = function (value) {
           return phoneValidation();
 
@@ -165,6 +172,15 @@ angular.module('reg')
           return codeValidation();
 
         };
+        $.fn.form.settings.rules.emptyMlh = function (value) {
+          return mlhValidation();
+
+        };
+        $.fn.form.settings.rules.emptyPrehacks = function (value) {
+          return prehacksValidation();
+
+        };
+
         // Semantic-UI form validation
         $('.ui.form').form({
           inline: true,
@@ -294,7 +310,26 @@ angular.module('reg')
                   prompt: 'You must agree to the Privacy Policy and Terms & Conditions.'
                 }
               ]
+            },
+            mlhAgreement: {
+              identifier: 'mlhAgreement',
+              rules: [
+                {
+                  type: 'emptyMlh',
+                  prompt: 'It is optional to agree to this.'
+                }
+              ]
+            },
+	    attendingPrehacks: {
+              identifier: 'attendingPrehacks',
+              rules: [
+                {
+                  type: 'emptyPrehacks',
+                  prompt: 'It is optional to attend.'
+                }
+              ]
             }
+
           }
         });
       }

@@ -58,11 +58,13 @@
             name="year"
             ng-model="user.profile.graduationYear">
             <option value="Graduate">Graduate Student</option>
-	    <option value="2020">2020</option>
             <option value="2021">2021</option>
             <option value="2022">2022</option>
             <option value="2023">2023</option>
-	    <option value="Highschool">Highschool</option>
+	    <option value="2024">2024</option>
+	    <option value="2025">2025</option>
+	    <option value="2026">2026</option>
+	    <option value="Highschool">High school</option>
 	  </select>
         </div>
         <div class="field" ng-show="!autoFilledMajor">
@@ -148,7 +150,7 @@
                  ng-model="user.profile.otherSites">
         </div>
 
-        <div class="field">
+        <!-- <div class="field">
           <label class="required">Any dietary restrictions?</label>
           <select
             name="diet"
@@ -164,6 +166,7 @@
             <option value="O">Other</option>
           </select>
         </div>
+	-->
 
 	<br>
 	<p class="line"></p>
@@ -200,6 +203,15 @@
         </div>
 
         <div class="field"
+             ng-hide="attendingPrehacks">
+          <p>Prehacks Attendance</p><p></p>
+          <p style="font-weight: normal;">Please check if you will be attending our prehacks event. <div class="ui checkbox">
+            <input type="checkbox" id="attendingPrehacks" ng-model="user.profile.attendingPrehacks">
+            <label for="attendingPrehacks">I will be attending prehacks. </label>
+          </div>
+        </div>
+
+        <div class="field"
 	     ng-hide="codeAgreement">
 		<p class="required">Code of Conduct:</p><p></p>
           <div class="ui checkbox">
@@ -219,6 +231,7 @@
             <label for="dataAgreement">I agree.</label>
           </div>
         </div>
+<!--
 	<br>
 	<div class="field">
                  <p>Are you an Adult?</p><p></p>
@@ -227,7 +240,18 @@
             <input type="checkbox" id="adult" ng-model="user.profile.adult">
             <label for="adult">I am 18 or older.</label>
         </div>
-	<br>
+	<br> -->
+
+        <div class="field"
+             ng-hide="mlhAgreement">
+          <p>Optional MLH Communication</p><p></p>
+          <p style="font-weight: normal;">I authorize MLH to send me pre- and post-event informational emails, which contain free credit and opportunities from their partners.</p>
+          <div class="ui checkbox">
+            <input type="checkbox" id="mlhAgreement" ng-model="user.profile.mlhAgreement">
+            <label for="mlhAgreement">I agree.</label>
+          </div>
+        </div>
+
 	<br>
 	<br>
 

@@ -775,5 +775,14 @@
     "fiu.edu": {
         "school": "Florida International University",
         "state": "Florida"
+    },
+        "umsl.edu": {
+        "school": "University of Missouri-St. Louis",
+        "state": "Missouri"
+    },
+    {
+        "astate.edu": {
+        "school": "Arkansas State University",
+        "state": "Arkansas"
     }
 }

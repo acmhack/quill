@@ -18,12 +18,13 @@ var profile = {
     min: 1,
     max: 15,
   },
-
+/*
   adult: {
     type: Boolean,
     required: true,
     default: false,
   },
+*/
 
   school: {
     type: String,
@@ -40,7 +41,7 @@ var profile = {
   graduationYear: {
     type: String,
     enum: {
-      values: '2020 2021 2022 2023 Highschool Graduate'.split(' '),
+      values: '2021 2021 2023 2024 2025 2026 Highschool Graduate'.split(' '),
     }
   },
 
@@ -108,6 +109,7 @@ var profile = {
       values: 'S M L X'.split(' ')
     }
   },
+/*
 
   diet: {
     type: String,
@@ -115,6 +117,7 @@ var profile = {
       values: 'N T V G D A K H O'.split(' ')
     }
   },
+*/
 
   travel: {
     type: String,
@@ -157,12 +160,22 @@ var profile = {
     required: true,
     default: false,
   },
+  mlhAgreement: {
+    type: Boolean,
+    required: false,
+    default: false,
+  },
+  attendingPrehacks: {
+    type: Boolean,
+    required: false,
+    default: false,
+  }
 };
 
 // Only after confirmed
 var confirmation = {
   phone: String,
-  dietaryRestrictions: [String],
+  // dietaryRestrictions: [String],
   shirtSize: {
     type: String,
     enum: {
@@ -455,8 +468,9 @@ schema.statics.validateProfile = function(profile, cb){
     profile.dataAgreement == true &&
     profile.game.length > 0 &&
     profile.discoveryMethod.length > 0 &&
-    profile.superbowl.length > 0 &&
+    profile.superbowl.length > 0  /*  &&
     profile.diet.length > 0 
+*/
 
   ));
 };
