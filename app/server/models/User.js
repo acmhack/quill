@@ -455,8 +455,7 @@ schema.statics.validateProfile = function(profile, cb){
     profile.dataAgreement == true &&
     profile.game.length > 0 &&
     profile.discoveryMethod.length > 0 &&
-    profile.superbowl.length > 0 &&
-    profile.diet.length > 0 
+    profile.superbowl.length > 0
 
   ));
 };
