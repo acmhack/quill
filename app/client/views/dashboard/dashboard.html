@@ -43,6 +43,8 @@
           </p>
         </div>
 
+
+
         <div
           ng-if="dashState('unverified')"
           class="description">
@@ -51,6 +53,14 @@
             Your email address ({{user.email}}) is not yet verified.
             </strong>
           </p>
+
+
+          <p>
+            <strong>
+            Please be sure to check your spam or junk folder for the verification email and add pickhacks@mst.edu to your Safe Sender List.
+            </strong>
+          </p>
+
           <p>
             {{ DASHBOARD.UNVERIFIED }}
           </p>
@@ -59,13 +69,23 @@
           </div>
         </div>
 
+	<div
+          ng-class="settings.timeClose"
+          ng-if="(!dashState('admittedAndCanConfirm') || !dashState('admittedAndCannotConfirm') || !dashState('confirmed') || !dashState('declined')) && !dashState('reject$          <strong>
+            COnfirmation Deadline to recieve swag before event:
+          </strong>
+                Wednesday, March 31st 2021, 11:59 PM CST
+        </div>
+
+
+
         <div
           ng-class="settings.timeClose"
           ng-if="(!dashState('admittedAndCanConfirm') || !dashState('admittedAndCannotConfirm') || !dashState('confirmed') || !dashState('declined')) && !dashState('rejected')">
           <strong>
             Registration Deadline:
           </strong>
-        	Friday, April 2nd 2021, 11:59 PM CST
+        	Thursday, April 8th 2021, 11:59 PM CST
 	</div>
 
         <div
@@ -74,7 +94,7 @@
           <strong>
             Confirmation Deadline:
           </strong>
-        	Sunday, April 4th 2021, 11:59 PM CST
+        	Thursday, April 8th 2021, 11:59 PM CST
 	</div>
 
         <div
@@ -222,10 +242,50 @@
                 {{ DASHBOARD.CONFIRMED_NOT_PAST_TITLE }}
             </h4>
 	    <h4>
-		    Thanks for confirming, and see you at the festival! Don't forget to tell your friends and RSVP for our 
-		    <a href="https://www.facebook.com/events/574499959827553/" target="_blank">Facebook Event</a>.
+		    Thanks for confirming, and see you at the festival! <!-- Don't forget to tell your friends and RSVP for our 
+		    <a href="https://www.facebook.com/events/574499959827553/" target="_blank">Facebook Event</a>.-->
 	    </h4>
           </div>
+
+
+
+
+
+        <div ng-if="user.status.admitted == true">
+          <p>
+            <strong>
+              PreHacks 2021 Hopin Link: <a href="https://hopin.com/events/prehacks2021/" target="_blank" rel="noopener noreferrer">https://hopin.com/events/prehacks2021/</a>
+	    </strong>
+          </p>
+          <p>
+          </p>
+        </div>
+
+
+
+
+        <div ng-if="user.status.admitted == true">
+          <p>
+            <strong>
+              PickHacks 2021 Hopin Link: <a href="https://hopin.com/events/pickhacks2021/" target="_blank" rel="noopener noreferrer">https://hopin.com/events/pickhacks2021/</a>
+            </strong>
+          </p>
+          <p>
+          </p>
+        </div>
+
+
+        <div ng-if="user.status.admitted == true">
+          <p>
+            <strong>
+              PickHacks 2021 Discord Link: <a href="https://discord.gg/36r3W5gn" target="_blank" rel="noopener noreferrer">https://discord.gg/36r3W5gn</a>
+            </strong>
+          </p>
+          <p>
+          </p>
+        </div>
+
+
 
           <div
             class="markdown"

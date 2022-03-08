@@ -41,7 +41,8 @@ var profile = {
   graduationYear: {
     type: String,
     enum: {
-      values: '2021 2021 2023 2024 2025 2026 Highschool Graduate'.split(' '),
+<<<<<<< HEAD
+      values: '2021 2021 2023 2024 2025 2026 Highschool Graduate'.spli
     }
   },
 
@@ -109,6 +110,7 @@ var profile = {
       values: 'S M L X'.split(' ')
     }
   },
+/*
 
   diet: {
     type: String,
@@ -116,7 +118,7 @@ var profile = {
       values: 'N T V G D A K H O'.split(' ')
     }
   },
-
+*/
 
   travel: {
     type: String,
@@ -467,7 +469,14 @@ schema.statics.validateProfile = function(profile, cb){
     profile.dataAgreement == true &&
     profile.game.length > 0 &&
     profile.discoveryMethod.length > 0 &&
-    profile.superbowl.length > 0 
+<<<<<<< HEAD
+    profile.superbowl.length > 0  /*  &&
+    profile.diet.length > 0 
+*/
+=======
+    profile.superbowl.length > 0
+>>>>>>> 9f8b3d735f3e0705ed898f4065bc4f558e202e6b
+
   ));
 };
 

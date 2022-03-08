@@ -1,4 +1,5 @@
 
+
 {
     "utdallas.edu": {
         "school": "The University of Texas at Dallas",
@@ -776,12 +777,13 @@
         "school": "Florida International University",
         "state": "Florida"
     },
-    "umsl.edu": {
+        "umsl.edu": {
         "school": "University of Missouri-St. Louis",
         "state": "Missouri"
     },
-    "astate.edu": {
-        "school": "Askansas State University",
+    {
+        "astate.edu": {
+        "school": "Arkansas State University",
         "state": "Arkansas"
     }
 }

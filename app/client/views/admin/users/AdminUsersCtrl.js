@@ -354,19 +354,19 @@ angular.module('reg')
               },{
                 name: 'Graduation Year',
                 value: user.profile.graduationYear
-              },{
+              }, /* {
 		name: 'Adult (18+)',
                 value: user.profile.adult
-              },{
+              },*/{
                 name: 'Description',
                 value: user.profile.description
               },{
 		name: 'Discovery Method',
                 value: user.profile.discoveryMethod
-              },{
+              },/*{
 		name: 'Diet',
                 value: user.profile.diet
-              },{
+              },*/{
 		name: 'Participation Count',
                 value: user.profile.participationCount
               },{
@@ -383,7 +383,7 @@ angular.module('reg')
           },{
             name: 'Confirmation',
             fields: [
-	       {
+	       /*{
                 name: 'Liability Signature',
                 value: user.confirmation.signaturePhotoRelease
               },{
@@ -404,7 +404,7 @@ angular.module('reg')
               },{      
                 name: 'Additional Notes',
                 value: user.confirmation.notes
-              }
+              }*/{}
             ]
           }
         ];
